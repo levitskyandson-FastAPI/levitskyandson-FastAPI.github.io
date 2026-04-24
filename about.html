@@ -3,37 +3,204 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>О нас | ИИ-ассистент</title>
+    <title>О компании | Levitsky & Son AI Solutions</title>
     <style>
-        body { font-family: Arial, sans-serif; margin: 0; padding: 0; background: #f4f4f4; }
-        header { background: #2c3e50; color: white; padding: 1rem; text-align: center; }
-        nav a { color: white; margin: 0 15px; text-decoration: none; }
-        .container { max-width: 900px; margin: 2rem auto; padding: 0 1rem; }
-        footer { background: #2c3e50; color: white; text-align: center; padding: 1rem; position: fixed; bottom: 0; width: 100%; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f4f4;
+            min-height: 100vh;
+        }
+        header {
+            background: #2c3e50;
+            color: white;
+            padding: 1rem;
+            text-align: center;
+        }
+        nav a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+        }
+        .container {
+            max-width: 1100px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+        .card {
+            background: white;
+            border-radius: 10px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 1rem;
+        }
+        h2 {
+            color: #2c3e50;
+            margin: 1.5rem 0 1rem 0;
+            border-left: 4px solid #3498db;
+            padding-left: 15px;
+        }
+        h3 {
+            color: #3498db;
+            margin: 1rem 0 0.5rem 0;
+        }
+        ul, ol {
+            margin: 1rem 0 1rem 2rem;
+        }
+        li {
+            margin: 0.5rem 0;
+        }
+        .badge {
+            display: inline-block;
+            background: #3498db;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 12px;
+            margin-right: 10px;
+        }
+        .founder {
+            background: #ecf0f1;
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin-top: 1rem;
+        }
+        footer {
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 1.5rem;
+            margin-top: 2rem;
+        }
+        footer a {
+            color: white;
+            margin: 0 10px;
+        }
+        @media (max-width: 768px) {
+            nav a {
+                display: inline-block;
+                margin: 5px 10px;
+            }
+        }
     </style>
 </head>
 <body>
     <header>
-        <h1>🤖 О проекте</h1>
+        <h1>🤖 Levitsky & Son AI Solutions</h1>
         <nav>
             <a href="/">Главная</a>
-            <a href="/about.html">О нас</a>
+            <a href="/tariffs.html">Тарифы</a>
+            <a href="/cases.html">Кейсы</a>
+            <a href="/info.html">Информация</a>
             <a href="/contacts.html">Контакты</a>
         </nav>
     </header>
+
     <div class="container">
-        <h2>Кому мы помогаем</h2>
-        <p>Наш ИИ-ассистент создан для онлайн-школ, платформ и LMS, которые хотят автоматизировать обработку заявок и повысить конверсию в продажи.</p>
-        <h2>Как это работает</h2>
-        <ol>
-            <li>Пользователь пишет в Telegram, MAX или на сайте</li>
-            <li>AI-ассистент общается по BANT-сценарию</li>
-            <li>Готовая карточка лида передается в CRM</li>
-            <li>Менеджер звонит только заинтересованному клиенту</li>
-        </ol>
+        <div class="card">
+            <h1>📌 Цифровое преимущество для вашего бизнеса</h1>
+            <p>Levitsky & Son AI Solutions — AI-агентство, которое внедряет интеллектуальных ассистентов для автоматизации продаж и обработки клиентов.</p>
+            <p style="margin-top: 1rem;"><strong>Наш продукт — Цифровое преимущество.</strong> Это когда ваш бизнес отвечает клиентам за 8 секунд вместо 2 часов, не теряет заявки, квалифицирует лиды автоматически и передаёт менеджеру только тёплых клиентов.</p>
+        </div>
+
+        <div class="card">
+            <h2>⚡ Что мы делаем</h2>
+            <ul>
+                <li><span class="badge">AI</span> AI-ассистенты для продаж — квалификация, работа с возражениями, передача лида менеджеру</li>
+                <li><span class="badge">AI</span> AI-операторы для обработки входящих заявок — MAX, Telegram, Avito, сайт</li>
+                <li><span class="badge">🎤</span> Голосовые ассистенты — распознавание голосовых сообщений и звонков</li>
+                <li><span class="badge">🔄</span> Интеграция с CRM — amoCRM, Bitrix24, YouGile, 1С</li>
+                <li><span class="badge">📚</span> RAG база знаний — ассистент знает всё о вашем продукте и отвечает точно</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <h2>🎯 Кому подходим</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px; margin-top: 1rem;">
+                <div>🏢 Агентства недвижимости</div>
+                <div>🏗️ Застройщики</div>
+                <div>📦 Оптовые продажи</div>
+                <div>🛍️ Розничные сети</div>
+                <div>🎓 Онлайн-школы</div>
+                <div>🖥️ E-commerce</div>
+                <div>🚚 Логистика</div>
+                <div>🏥 Медицинские центры</div>
+                <div>⚖️ Юридические компании</div>
+                <div>💻 SaaS-проекты</div>
+                <div>📢 Маркетинговые агентства</div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>📜 Наша история</h2>
+            <p><strong>2024-2026 годы</strong> стали точкой перелома: AI перестал быть экспериментом и стал инфраструктурой бизнеса. Компании, которые внедрили AI первыми — получили Цифровое преимущество.</p>
+            <ul>
+                <li><strong>2024</strong> — основание компании. Денис Левицкий, более 10 лет в IT и управлении проектами, увидел точку перелома: AI стал доступен бизнесу любого масштаба.</li>
+                <li><strong>2025, март</strong> — запуск первого коммерческого проекта: AI-ассистент для агентства недвижимости Москва. Результат: конверсия с 18% до 31% за первый месяц.</li>
+                <li><strong>2025, сентябрь</strong> — расширение команды, разработка RAG-функционала. Запуск голосового распознавания.</li>
+                <li><strong>2026</strong> — выход на полноценный SaaS: платформа обслуживает клиентов в недвижимости, оптовых продажах, онлайн-образовании.</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <h2>🌟 Наша миссия</h2>
+            <p>Дать каждой компании Цифровое преимущество через внедрение AI в продажи и обработку клиентов.</p>
+            <p>Мы строим не чат-ботов. Мы строим <strong>цифровых сотрудников</strong>, которые работают 24/7, не устают, не ошибаются и приносят результат с первого дня.</p>
+        </div>
+
+        <div class="card">
+            <h2>💎 Наши ценности</h2>
+            <ul>
+                <li><strong>Инновации</strong> — используем передовые технологии: AI, RAG, векторные базы данных, голосовое распознавание.</li>
+                <li><strong>Прозрачность</strong> — клиент всегда знает как работает его ассистент и видит результат в цифрах.</li>
+                <li><strong>Результат</strong> — считаем не количество ботов, а рост выручки и конверсии клиента.</li>
+                <li><strong>Партнёрство</strong> — сопровождаем проект после внедрения, растём вместе с клиентом.</li>
+                <li><strong>Честность</strong> — ассистент представляется как AI, без обмана. Доверие важнее иллюзии.</li>
+            </ul>
+        </div>
+
+        <div class="card founder">
+            <h2>👨‍💼 Основатель</h2>
+            <p><strong>Денис Левицкий</strong> — CEO и архитектор решений. Более 10 лет в IT и управлении проектами.</p>
+            <p>Назвал компанию "Левицкий и сын" в честь семейного подхода к делу — строим на совесть, надолго, как для себя.</p>
+        </div>
+
+        <div class="card">
+            <h2>📊 Результаты наших клиентов</h2>
+            <ul>
+                <li>🏢 Агентство недвижимости Москва: конверсия с 18% до 31%, ROI 380% за 6 месяцев</li>
+                <li>🎓 Онлайн-школа СПб: конверсия с 11% до 23%, средний чек +18%</li>
+                <li>📦 Оптовый дистрибьютор Ростов: 9000 заявок/мес, операторы с 6 до 2, ROI 1840% за год</li>
+                <li>🏗️ Застройщик Краснодар: конверсия с 8% до 19%, выручка +2,8 млн руб/мес</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <h2>🔌 Каналы подключения</h2>
+            <ul>
+                <li><strong>MAX</strong> — основной канал, работает без ограничений</li>
+                <li><strong>Telegram</strong> — классика, все тарифы</li>
+                <li><strong>Avito</strong> — через официальный API</li>
+                <li><strong>Сайт</strong> — виджет за 15 минут</li>
+                <li><strong>WhatsApp и телефония SIP/АТС</strong> — тариф ПРОФИ</li>
+            </ul>
+        </div>
     </div>
+
     <footer>
-        <p>© 2025 Ваш бренд. Все права защищены.</p>
+        <p>© 2025 Levitsky & Son AI Solutions. Все права защищены.</p>
+        <p>
+            <a href="/privacy.html">Политика конфиденциальности</a> | 
+            <a href="/offer.html">Договор оферты</a>
+        </p>
     </footer>
 </body>
 </html>
