@@ -3,38 +3,221 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Контакты | ИИ-ассистент</title>
+    <title>Контакты | Levitsky & Son AI Solutions</title>
     <style>
-        body { font-family: Arial, sans-serif; margin: 0; padding: 0; background: #f4f4f4; }
-        header { background: #2c3e50; color: white; padding: 1rem; text-align: center; }
-        nav a { color: white; margin: 0 15px; text-decoration: none; }
-        .container { max-width: 900px; margin: 2rem auto; padding: 0 1rem; }
-        footer { background: #2c3e50; color: white; text-align: center; padding: 1rem; position: fixed; bottom: 0; width: 100%; }
-        .contact-info { background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f4f4;
+            min-height: 100vh;
+        }
+        header {
+            background: #2c3e50;
+            color: white;
+            padding: 1rem;
+            text-align: center;
+        }
+        nav a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+        }
+        .container {
+            max-width: 1100px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+        .page-title {
+            text-align: center;
+            margin-bottom: 2rem;
+            color: #2c3e50;
+        }
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+        .contact-info, .contact-form {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        .contact-info p {
+            margin: 1rem 0;
+        }
+        .contact-info h2, .contact-form h2 {
+            color: #2c3e50;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid #3498db;
+            padding-left: 15px;
+        }
+        input, textarea {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-family: inherit;
+        }
+        .checkbox-label {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            margin: 15px 0;
+            font-size: 13px;
+            line-height: 1.4;
+        }
+        .checkbox-label input {
+            width: 18px;
+            height: 18px;
+            margin: 0;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+        .checkbox-label a {
+            color: #3498db;
+            text-decoration: none;
+        }
+        .checkbox-label a:hover {
+            text-decoration: underline;
+        }
+        button {
+            background: #3498db;
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            width: 100%;
+            transition: background 0.3s;
+        }
+        button:hover {
+            background: #2980b9;
+        }
+        .req {
+            color: #e74c3c;
+        }
+        .note {
+            font-size: 12px;
+            color: #666;
+            margin-top: 1rem;
+            text-align: center;
+        }
+        footer {
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 1.5rem;
+            margin-top: 2rem;
+        }
+        footer a {
+            color: white;
+            margin: 0 10px;
+        }
+        hr {
+            margin: 1.5rem 0;
+            border: none;
+            border-top: 1px solid #eee;
+        }
+        @media (max-width: 768px) {
+            nav a {
+                display: inline-block;
+                margin: 5px 10px;
+            }
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+        }
     </style>
 </head>
 <body>
     <header>
-        <h1>📞 Контакты</h1>
+        <h1>🤖 Levitsky & Son AI Solutions</h1>
         <nav>
             <a href="/">Главная</a>
-            <a href="/about.html">О нас</a>
+            <a href="/tariffs.html">Тарифы</a>
+            <a href="/cases.html">Кейсы</a>
+            <a href="/info.html">Информация</a>
             <a href="/contacts.html">Контакты</a>
         </nav>
     </header>
+
     <div class="container">
-        <div class="contact-info">
-            <h2>Свяжитесь с нами</h2>
-            <p>📧 Email: <a href="mailto:your@email.com">your@email.com</a></p>
-            <p>📱 Telegram: <a href="https://t.me/yourusername">@yourusername</a></p>
-            <p>🌐 Сайт: <a href="https://yourdomain.ru">yourdomain.ru</a></p>
-            <hr>
-            <h3>Заказать консультацию</h3>
-            <p>Напишите нам в Telegram или по email — и мы подберем решение под ваш бизнес.</p>
+        <h1 class="page-title">📞 Свяжитесь с нами</h1>
+
+        <div class="contact-grid">
+            <!-- Левая колонка: контактная информация -->
+            <div class="contact-info">
+                <h2>Контактная информация</h2>
+                <p>📧 Email: <a href="mailto:levitskyandson@mail.ru">levitskyandson@mail.ru</a></p>
+                <p>📱 Telegram: <a href="https://t.me/levitskyandson">@levitskyandson</a></p>
+                <p>📞 Телефон: <a href="tel:+79999162555">8 (9999) 162-555</a></p>
+                <p>🌐 Сайт: <a href="https://www.levitskyandson.com">www.levitskyandson.com</a></p>
+                
+                <hr>
+                
+                <h3>🏢 Реквизиты</h3>
+                <p><strong>Индивидуальный предприниматель<br>Левицкий Денис Андреевич</strong></p>
+                <p>ИНН: 1234567890<br>
+                ОГРНИП: 123456789012345</p>
+                
+                <hr>
+                
+                <h3>⏰ Режим работы</h3>
+                <p>Поддержка по email: 24/7<br>
+                Ответ на заявки: в течение 4 часов<br>
+                Техническая поддержка: 10:00–20:00 МСК</p>
+            </div>
+
+            <!-- Правая колонка: форма обратной связи -->
+            <div class="contact-form">
+                <h2>📝 Напишите нам</h2>
+                <form action="https://formspree.io/f/mojyyggw" method="POST">
+                    <input type="text" name="name" placeholder="Ваше имя *" required>
+                    <input type="email" name="email" placeholder="Email *" required>
+                    <input type="tel" name="phone" placeholder="Телефон">
+                    <textarea name="message" rows="5" placeholder="Сообщение *" required></textarea>
+                    
+                    <!-- Чекбокс согласия на обработку персональных данных (по 152-ФЗ) -->
+                    <label class="checkbox-label">
+                        <input type="checkbox" name="consent" required>
+                        <span>
+                            Я принимаю условия <a href="/offer.html" target="_blank">публичной оферты</a> и даю согласие на 
+                            <a href="/privacy.html" target="_blank">обработку персональных данных</a> в соответствии с 152-ФЗ.
+                            <span class="req">*</span>
+                        </span>
+                    </label>
+                    
+                    <button type="submit">📩 Отправить сообщение</button>
+                    <p class="note">Поля, отмеченные <span class="req">*</span>, обязательны для заполнения</p>
+                </form>
+                
+                <hr>
+                
+                <h3>🎯 Что вы получите после обращения?</h3>
+                <ul style="margin-top: 0.5rem; margin-left: 1.5rem;">
+                    <li>Расчёт стоимости под ваш бизнес</li>
+                    <li>Демонстрацию работы AI-ассистента</li>
+                    <li>Кейсы из вашей отрасли</li>
+                    <li>Ответ в течение 4 часов</li>
+                </ul>
+            </div>
         </div>
     </div>
+
     <footer>
-        <p>© 2025 Ваш бренд. Все права защищены.</p>
+        <p>© 2025 Levitsky & Son AI Solutions. Все права защищены.</p>
+        <p>
+            <a href="/privacy.html">Политика конфиденциальности</a> | 
+            <a href="/offer.html">Договор оферты</a>
+        </p>
     </footer>
 </body>
 </html>
