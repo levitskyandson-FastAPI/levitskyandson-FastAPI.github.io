@@ -3,13 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Главная | ИИ-ассистент</title>
+    <title>Levitsky & Son AI Solutions</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
+        * {
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
             background: #f4f4f4;
+            min-height: 100vh;
         }
         header {
             background: #2c3e50;
@@ -23,51 +27,157 @@
             text-decoration: none;
         }
         .container {
-            max-width: 900px;
+            max-width: 1100px;
             margin: 2rem auto;
             padding: 0 1rem;
         }
-        .btn {
+        .card {
+            background: white;
+            border-radius: 10px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 1rem;
+        }
+        h2 {
+            color: #2c3e50;
+            margin: 1.5rem 0 1rem 0;
+            border-left: 4px solid #3498db;
+            padding-left: 15px;
+        }
+        h3 {
+            color: #3498db;
+            margin: 1rem 0 0.5rem 0;
+        }
+        ul, ol {
+            margin: 1rem 0 1rem 2rem;
+        }
+        li {
+            margin: 0.5rem 0;
+        }
+        .badge {
             display: inline-block;
-            margin-top: 20px;
             background: #3498db;
             color: white;
-            padding: 10px 20px;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 12px;
+            margin-right: 10px;
+        }
+        .hero {
+            text-align: center;
+            padding: 2rem;
+            background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+            color: white;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+        }
+        .hero h1 {
+            color: white;
+            font-size: 2rem;
+        }
+        .hero .btn {
+            display: inline-block;
+            background: #e67e22;
+            color: white;
+            padding: 12px 30px;
             text-decoration: none;
             border-radius: 5px;
+            margin-top: 1rem;
+            font-weight: bold;
+        }
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        .stat-card {
+            background: #ecf0f1;
+            padding: 1rem;
+            border-radius: 8px;
+            text-align: center;
+        }
+        .stat-number {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #e67e22;
         }
         footer {
             background: #2c3e50;
             color: white;
             text-align: center;
-            padding: 1rem;
-            position: fixed;
-            bottom: 0;
-            width: 100%;
+            padding: 1.5rem;
+            margin-top: 2rem;
+        }
+        footer a {
+            color: white;
+            margin: 0 10px;
+        }
+        @media (max-width: 768px) {
+            nav a {
+                display: inline-block;
+                margin: 5px 10px;
+            }
         }
     </style>
 </head>
 <body>
     <header>
-        <h1>🤖 ИИ-ассистент для онлайн-школ</h1>
+        <h1>🤖 Levitsky & Son AI Solutions</h1>
         <nav>
             <a href="/">Главная</a>
-            <a href="/about.html">О нас</a>
+            <a href="/tariffs.html">Тарифы</a>
+            <a href="/cases.html">Кейсы</a>
+            <a href="/info.html">Информация</a>
             <a href="/contacts.html">Контакты</a>
         </nav>
     </header>
+
     <div class="container">
-        <h2>Автоматизируйте сбор и квалификацию лидов</h2>
-        <p>Ваш ИИ-ассистент 24/7 общается с клиентами, собирает BANT-параметры и передает готовые заявки в CRM.</p>
-        <ul>
-            <li>✅ Работает в Telegram, MAX, Avito, на сайте</li>
-            <li>✅ Интеграция с AmoCRM, GetCourse, Bitrix24</li>
-            <li>✅ Готовые сценарии для онлайн-школ</li>
-        </ul>
-        <a href="/contacts.html" class="btn">Связаться</a>
+        <div class="hero">
+            <h1>Цифровое преимущество для вашего бизнеса</h1>
+            <p>AI-ассистент, который отвечает за 8 секунд, работает 24/7 и передаёт менеджеру только тёплых клиентов</p>
+            <a href="/contacts.html" class="btn">📩 Получить консультацию</a>
+        </div>
+
+        <div class="stats-grid">
+            <div class="stat-card"><div class="stat-number">8 сек</div><div>Среднее время ответа</div></div>
+            <div class="stat-card"><div class="stat-number">24/7</div><div>Работа без выходных</div></div>
+            <div class="stat-card"><div class="stat-number">50-70%</div><div>Экономия на первичной линии</div></div>
+            <div class="stat-card"><div class="stat-number">&lt;3%</div><div>Потеря заявок</div></div>
+        </div>
+
+        <div class="card">
+            <h2>⚡ Что мы делаем</h2>
+            <ul>
+                <li><span class="badge">AI</span> AI-ассистенты для продаж — квалификация, работа с возражениями, передача лида менеджеру</li>
+                <li><span class="badge">AI</span> AI-операторы для обработки входящих заявок — MAX, Telegram, Avito, сайт</li>
+                <li><span class="badge">🎤</span> Голосовые ассистенты — распознавание голосовых сообщений и звонков</li>
+                <li><span class="badge">🔄</span> Интеграция с CRM — amoCRM, Bitrix24, YouGile, 1С</li>
+                <li><span class="badge">📚</span> RAG база знаний — ассистент знает всё о вашем продукте и отвечает точно</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <h2>📈 Результаты наших клиентов</h2>
+            <ul>
+                <li>🏢 Агентство недвижимости Москва: конверсия с 18% → 31%, ROI 380%</li>
+                <li>🎓 Онлайн-школа СПб: конверсия с 11% → 23%, средний чек +18%</li>
+                <li>📦 Оптовый дистрибьютор Ростов: операторы с 6 → 2, ROI 1840% за год</li>
+            </ul>
+        </div>
     </div>
+
     <footer>
-        <p>© 2025 Ваш бренд. Все права защищены.</p>
+        <p>© 2025 Levitsky & Son AI Solutions. Все права защищены.</p>
+        <p>
+            <a href="/privacy.html">Политика конфиденциальности</a> | 
+            <a href="/offer.html">Договор оферты</a>
+        </p>
     </footer>
 </body>
 </html>
