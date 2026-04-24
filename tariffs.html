@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Тарифы | Levitsky & Son AI Solutions</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f4f4;
+            min-height: 100vh;
+        }
+        header {
+            background: #2c3e50;
+            color: white;
+            padding: 1rem;
+            text-align: center;
+        }
+        nav a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+        }
+        .container {
+            max-width: 1300px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+        .page-title {
+            text-align: center;
+            margin-bottom: 2rem;
+            color: #2c3e50;
+        }
+        .tariffs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        .tariff-card {
+            background: white;
+            border-radius: 10px;
+            padding: 1.5rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+            position: relative;
+        }
+        .tariff-card:hover {
+            transform: translateY(-5px);
+        }
+        .popular {
+            border: 2px solid #e67e22;
+        }
+        .popular-badge {
+            position: absolute;
+            top: -12px;
+            right: 20px;
+            background: #e67e22;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+        .tariff-name {
+            font-size: 1.8rem;
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+        }
+        .price {
+            margin: 1rem 0;
+        }
+        .price-one {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #3498db;
+        }
+        .price-month {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #3498db;
+        }
+        .price small {
+            font-size: 0.8rem;
+            color: #666;
+        }
+        .features {
+            list-style: none;
+            margin: 1.5rem 0;
+        }
+        .features li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #eee;
+            font-size: 0.9rem;
+        }
+        .features li:before {
+            content: "✅ ";
+        }
+        .btn {
+            display: inline-block;
+            width: 100%;
+            text-align: center;
+            background: #3498db;
+            color: white;
+            padding: 12px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            margin-top: 1rem;
+            transition: background 0.3s;
+        }
+        .btn:hover {
+            background: #2980b9;
+        }
+        .info-block {
+            background: white;
+            border-radius: 10px;
+            padding: 2rem;
+            margin-top: 2rem;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        .info-block h2 {
+            color: #2c3e50;
+            margin-bottom: 1rem;
+        }
+        .info-block ul {
+            margin-left: 2rem;
+            margin-top: 0.5rem;
+        }
+        .info-block li {
+            margin: 0.5rem 0;
+        }
+        .guarantee {
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            border-radius: 10px;
+            margin-top: 2rem;
+        }
+        .guarantee a {
+            color: #3498db;
+        }
+        footer {
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 1.5rem;
+            margin-top: 2rem;
+        }
+        footer a {
+            color: white;
+            margin: 0 10px;
+        }
+        @media (max-width: 768px) {
+            nav a {
+                display: inline-block;
+                margin: 5px 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>🤖 Levitsky & Son AI Solutions</h1>
+        <nav>
+            <a href="/">Главная</a>
+            <a href="/tariffs.html">Тарифы</a>
+            <a href="/cases.html">Кейсы</a>
+            <a href="/info.html">Информация</a>
+            <a href="/contacts.html">Контакты</a>
+        </nav>
+    </header>
+
+    <div class="container">
+        <h1 class="page-title">💰 Тарифы AI-ассистента</h1>
+
+        <div class="tariffs-grid">
+            <!-- Тариф МИКРО -->
+            <div class="tariff-card">
+                <div class="tariff-name">МИКРО</div>
+                <div class="price">
+                    <span class="price-one">24 900 ₽</span> <small>внедрение</small><br>
+                    <span class="price-month">9 900 ₽</span> <small>/мес</small>
+                </div>
+                <p><small>Для ИП, малый бизнес, до 100 заявок/мес</small></p>
+                <ul class="features">
+                    <li>MAX + Telegram (текст + голос)</li>
+                    <li>Голосовые до 50 сообщений/мес</li>
+                    <li>Квалификация BANT + возражения</li>
+                    <li>RAG до 20 документов</li>
+                    <li>100 диалогов/мес</li>
+                    <li>Уведомление менеджера</li>
+                    <li>Обновление базы 1 раз/мес</li>
+                    <li>Поддержка email</li>
+                </ul>
+                <a href="/contacts.html" class="btn">Выбрать тариф</a>
+            </div>
+
+            <!-- Тариф СТАРТ -->
+            <div class="tariff-card">
+                <div class="tariff-name">СТАРТ</div>
+                <div class="price">
+                    <span class="price-one">49 000 ₽</span> <small>внедрение</small><br>
+                    <span class="price-month">19 900 ₽</span> <small>/мес</small>
+                </div>
+                <p><small>Малый и средний бизнес, 100-300 заявок/мес</small></p>
+                <ul class="features">
+                    <li>MAX + Telegram + Avito</li>
+                    <li>Голосовые до 200 сообщений/мес</li>
+                    <li>Квалификация BANT + возражения</li>
+                    <li>RAG до 50 документов</li>
+                    <li>250 диалогов/мес</li>
+                    <li>Уведомление менеджера</li>
+                    <li>Обновление базы 1 раз/мес</li>
+                    <li>Поддержка чат/email (5/7)</li>
+                </ul>
+                <a href="/contacts.html" class="btn">Выбрать тариф</a>
+            </div>
+
+            <!-- Тариф БИЗНЕС (самый популярный) -->
+            <div class="tariff-card popular">
+                <div class="popular-badge">🔥 Самый популярный</div>
+                <div class="tariff-name">БИЗНЕС</div>
+                <div class="price">
+                    <span class="price-one">99 000 ₽</span> <small>внедрение</small><br>
+                    <span class="price-month">34 900 ₽</span> <small>/мес</small>
+                </div>
+                <p><small>Средний бизнес, 300-1000 заявок/мес</small></p>
+                <ul class="features">
+                    <li>MAX + Telegram + Avito + сайт</li>
+                    <li>Голосовые до 500 сообщений/мес</li>
+                    <li>Интеграция с CRM (amoCRM, Bitrix24, YouGile)</li>
+                    <li>Лид автоматически в CRM</li>
+                    <li>Квалификация BANT + возражения</li>
+                    <li>RAG до 200 документов</li>
+                    <li>500 диалогов/мес</li>
+                    <li>Обновление базы 2 раза/мес</li>
+                    <li>Персональный менеджер</li>
+                </ul>
+                <a href="/contacts.html" class="btn">Выбрать тариф</a>
+            </div>
+
+            <!-- Тариф ПРОФИ -->
+            <div class="tariff-card">
+                <div class="tariff-name">ПРОФИ</div>
+                <div class="price">
+                    <span class="price-one">149 000 ₽</span> <small>внедрение</small><br>
+                    <span class="price-month">54 900 ₽</span> <small>/мес</small>
+                </div>
+                <p><small>Крупный бизнес, 1000+ заявок/мес</small></p>
+                <ul class="features">
+                    <li>Все каналы + WhatsApp + телефония</li>
+                    <li>Голосовые безлимит</li>
+                    <li>Голосовой ассистент (звонки)</li>
+                    <li>Интеграция с CRM + 1С</li>
+                    <li>300 мин телефонии в месяц</li>
+                    <li>RAG до 500 документов</li>
+                    <li>Безлимит диалогов</li>
+                    <li>3 часа доработок/мес</li>
+                    <li>Еженедельное обновление базы</li>
+                    <li>Персональный менеджер</li>
+                </ul>
+                <a href="/contacts.html" class="btn">Выбрать тариф</a>
+            </div>
+        </div>
+
+        <div class="info-block">
+            <h2>📦 Сверхлимитное использование</h2>
+            <ul>
+                <li>Голосовые сообщения сверх лимита: <strong>2 руб/сообщение</strong></li>
+                <li>+100 документов в RAG: <strong>2 000 руб/мес</strong></li>
+                <li>+100 минут телефонии (ПРОФИ): <strong>600 руб/мес</strong></li>
+            </ul>
+        </div>
+
+        <div class="info-block">
+            <h2>⚙️ Что входит во внедрение</h2>
+            <ul>
+                <li>Настройка ассистента под специфику бизнеса</li>
+                <li>Написание промптов и сценариев диалогов</li>
+                <li>Загрузка базы знаний RAG</li>
+                <li>Интеграция с каналами (MAX, Telegram, Avito, сайт)</li>
+                <li>Интеграция с CRM (на тарифах БИЗНЕС и ПРОФИ)</li>
+                <li>Тестирование и отладка</li>
+                <li>Обучение сотрудников (1 сессия)</li>
+                <li>Техническая поддержка в период запуска</li>
+            </ul>
+        </div>
+
+        <div class="info-block">
+            <h2>⏱️ Сроки внедрения</h2>
+            <ul>
+                <li><strong>МИКРО:</strong> 3-5 рабочих дней</li>
+                <li><strong>СТАРТ:</strong> 5-7 рабочих дней</li>
+                <li><strong>БИЗНЕС:</strong> 7-14 рабочих дней</li>
+                <li><strong>ПРОФИ:</strong> 14-21 рабочий день</li>
+            </ul>
+        </div>
+
+        <div class="guarantee">
+            <h2>🛡️ Гарантия возврата 14 дней</h2>
+            <p>Если в течение 14 дней после запуска ассистент не принесёт ни одного квалифицированного лида по методологии BANT — возвращаем 100% стоимости внедрения. Без лишних вопросов и бюрократии.</p>
+            <p style="margin-top: 1rem;">🎁 <strong>Акция:</strong> При подписании договора в течение 5 рабочих дней после консультации — первый месяц сопровождения в подарок!</p>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2025 Levitsky & Son AI Solutions. Все права защищены.</p>
+        <p>
+            <a href="/privacy.html">Политика конфиденциальности</a> | 
+            <a href="/offer.html">Договор оферты</a>
+        </p>
+    </footer>
+</body>
+</html>
