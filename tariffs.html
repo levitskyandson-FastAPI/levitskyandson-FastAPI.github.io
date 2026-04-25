@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Тарифы | Levitsky & Son AI Solutions</title>
+<!-- Яндекс.Метрика -->
+<script type="text/javascript">
+(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window,document,"script","https://mc.yandex.ru/metrika/tag.js","ym");
+ym(108755683,"init",{clickmap:true,trackLinks:true,accurateTrackBounce:true,webvisor:true});
+</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/108755683" style="position:absolute;left:-9999px;" alt=""/></div></noscript>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:#080C14;--surface:#0D1525;--surface2:#111C30;
+  --accent:#D4A017;--accent2:#B8860B;--green:#00E5A0;--amber:#FFB347;
+  --text:#E8EFF8;--muted:#7A8FA8;--border:rgba(0,212,255,0.12);
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden;line-height:1.6}
+body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");pointer-events:none;z-index:0;opacity:.4}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:18px 48px;background:rgba(8,12,20,0.85);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+.nav-logo{font-family:'Syne',sans-serif;font-weight:800;font-size:18px;color:var(--text);text-decoration:none}
+.nav-logo span{color:var(--accent)}
+.nav-links{display:flex;gap:32px}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:14px;font-weight:500;transition:color .2s}
+.nav-links a:hover,.nav-links a.active{color:var(--text)}
+.nav-cta{background:var(--accent);color:var(--bg);border:none;padding:10px 24px;border-radius:8px;font-family:'Syne',sans-serif;font-weight:700;font-size:14px;cursor:pointer;text-decoration:none;transition:opacity .2s,transform .2s;white-space:nowrap}
+.nav-cta:hover{opacity:.9;transform:translateY(-1px)}
+
+.page-hero{padding:140px 24px 80px;text-align:center;position:relative;overflow:hidden}
+.page-hero::after{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(212,160,23,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(212,160,23,0.03) 1px,transparent 1px);background-size:60px 60px;mask-image:radial-gradient(ellipse 80% 60% at 50% 50%,black,transparent);pointer-events:none}
+.orb{position:absolute;width:500px;height:500px;background:radial-gradient(circle,rgba(212,160,23,0.07) 0%,transparent 70%);top:50%;left:50%;transform:translate(-50%,-60%);pointer-events:none}
+.section-tag{display:inline-block;font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--accent);margin-bottom:16px}
+.page-hero h1{font-family:'Syne',sans-serif;font-size:clamp(32px,5vw,56px);font-weight:800;line-height:1.08;letter-spacing:-1px;margin-bottom:16px}
+.page-hero h1 em{font-style:normal;color:var(--accent)}
+.page-hero p{color:var(--muted);font-size:18px;max-width:560px;margin:0 auto}
+
+.container{max-width:1200px;margin:0 auto;padding:0 24px;position:relative;z-index:1}
+
+/* PROMO BANNER */
+.promo-banner{background:linear-gradient(135deg,rgba(255,179,71,0.08),rgba(0,229,160,0.08));border:1px solid rgba(255,179,71,0.25);border-radius:16px;padding:20px 32px;display:flex;align-items:center;justify-content:space-between;gap:20px;margin-bottom:48px;flex-wrap:wrap}
+.promo-text strong{font-family:'Syne',sans-serif;font-size:16px;color:var(--amber)}
+.promo-text p{font-size:13px;color:var(--muted);margin-top:4px}
+.promo-badge{background:var(--amber);color:var(--bg);font-family:'Syne',sans-serif;font-weight:800;font-size:13px;padding:8px 20px;border-radius:100px;white-space:nowrap}
+
+/* TARIFFS GRID */
+.tariffs-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:60px}
+.tariff-card{background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:32px 24px;transition:all .3s;position:relative;display:flex;flex-direction:column}
+.tariff-card:hover{transform:translateY(-6px);border-color:rgba(212,160,23,0.3);box-shadow:0 20px 60px rgba(0,0,0,0.3)}
+.tariff-popular{border-color:var(--accent);background:linear-gradient(180deg,rgba(212,160,23,0.06) 0%,var(--surface) 50%)}
+.popular-tag{position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:var(--accent);color:var(--bg);font-family:'Syne',sans-serif;font-weight:700;font-size:11px;padding:5px 16px;border-radius:100px;white-space:nowrap}
+.tariff-name{font-family:'Syne',sans-serif;font-weight:800;font-size:24px;margin-bottom:4px}
+.tariff-for{font-size:12px;color:var(--muted);margin-bottom:24px;padding-bottom:24px;border-bottom:1px solid var(--border)}
+.price-impl{font-size:13px;color:var(--muted);margin-bottom:6px}
+.price-impl strong{font-family:'Syne',sans-serif;font-weight:800;font-size:26px;color:var(--accent)}
+.price-month strong{font-family:'Syne',sans-serif;font-weight:700;font-size:20px;color:var(--text)}
+.price-month span{font-size:13px;color:var(--muted)}
+.tariff-divider{margin:20px 0;border:none;border-top:1px solid var(--border)}
+.tariff-features{list-style:none;display:flex;flex-direction:column;gap:11px;flex:1;margin-bottom:28px}
+.tariff-features li{font-size:13px;color:var(--muted);display:flex;align-items:flex-start;gap:8px;line-height:1.4}
+.tariff-features li::before{content:'✓';color:var(--green);font-weight:700;flex-shrink:0;margin-top:1px}
+.tariff-features li.na{opacity:.4}
+.tariff-features li.na::before{content:'—';color:var(--muted)}
+.tariff-btn{display:block;width:100%;text-align:center;padding:14px;border-radius:12px;font-family:'Syne',sans-serif;font-weight:700;font-size:14px;text-decoration:none;border:none;cursor:pointer;transition:all .2s;margin-top:auto}
+.btn-outline{background:transparent;color:var(--accent);border:1px solid rgba(212,160,23,0.35)}
+.btn-outline:hover{background:rgba(212,160,23,0.08)}
+.btn-fill{background:var(--accent);color:var(--bg);box-shadow:0 0 30px rgba(212,160,23,0.25)}
+.btn-fill:hover{box-shadow:0 0 50px rgba(212,160,23,0.5);transform:translateY(-1px)}
+
+/* COMPARE TABLE */
+.compare-section{margin-bottom:80px}
+.compare-title{font-family:'Syne',sans-serif;font-weight:800;font-size:28px;margin-bottom:32px;letter-spacing:-.5px}
+.compare-table{width:100%;border-collapse:collapse;border-radius:16px;overflow:hidden}
+.compare-table th{background:var(--surface2);padding:16px 20px;text-align:left;font-family:'Syne',sans-serif;font-weight:700;font-size:13px;color:var(--muted);text-transform:uppercase;letter-spacing:1px}
+.compare-table th:first-child{color:var(--text);width:35%}
+.compare-table th.highlighted{color:var(--accent)}
+.compare-table td{padding:14px 20px;font-size:14px;border-bottom:1px solid var(--border);color:var(--muted)}
+.compare-table td:first-child{color:var(--text);font-weight:500}
+.compare-table td.highlighted{background:rgba(212,160,23,0.04);color:var(--text);font-weight:600}
+.compare-table tr:last-child td{border-bottom:none}
+.compare-table tr:hover td{background:rgba(255,255,255,0.02)}
+.check{color:var(--green);font-weight:700}
+.cross{color:var(--muted);opacity:.4}
+
+/* EXTRAS */
+.extras-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:80px}
+.extra-card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:24px;transition:border-color .2s}
+.extra-card:hover{border-color:rgba(212,160,23,0.3)}
+.extra-icon{font-size:24px;margin-bottom:12px}
+.extra-title{font-family:'Syne',sans-serif;font-weight:700;font-size:16px;margin-bottom:6px}
+.extra-price{color:var(--accent);font-family:'Syne',sans-serif;font-weight:800;font-size:20px;margin-bottom:6px}
+.extra-desc{font-size:13px;color:var(--muted)}
+
+/* GUARANTEE */
+.guarantee-block{background:linear-gradient(135deg,rgba(0,229,160,0.06),rgba(212,160,23,0.06));border:1px solid rgba(0,229,160,0.2);border-radius:24px;padding:52px;display:grid;grid-template-columns:1fr auto;gap:40px;align-items:center;margin-bottom:80px}
+.guarantee-title{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(22px,3vw,32px);margin-bottom:14px;line-height:1.2}
+.guarantee-title em{font-style:normal;color:var(--green)}
+.guarantee-text{color:var(--muted);font-size:15px;line-height:1.7}
+.guarantee-badge{background:rgba(0,229,160,0.08);border:2px solid rgba(0,229,160,0.3);border-radius:20px;padding:32px;text-align:center;min-width:180px}
+.guarantee-badge-icon{font-size:44px;margin-bottom:10px}
+.guarantee-badge-text{font-family:'Syne',sans-serif;font-weight:800;font-size:15px;color:var(--green);line-height:1.4}
+
+/* CTA */
+.cta-block{text-align:center;padding:80px 0}
+.cta-block h2{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(28px,4vw,44px);letter-spacing:-.8px;margin-bottom:16px}
+.cta-block h2 em{font-style:normal;color:var(--accent)}
+.cta-block p{color:var(--muted);font-size:17px;margin-bottom:36px}
+.btn-primary{display:inline-flex;align-items:center;gap:10px;background:var(--accent);color:var(--bg);padding:16px 36px;border-radius:12px;font-family:'Syne',sans-serif;font-weight:700;font-size:16px;text-decoration:none;transition:all .25s;box-shadow:0 0 40px rgba(212,160,23,0.3)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 0 60px rgba(212,160,23,0.5)}
+
+footer{background:var(--surface);border-top:1px solid var(--border);padding:32px 48px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;position:relative;z-index:1}
+.footer-brand{font-family:'Syne',sans-serif;font-weight:700;font-size:15px}
+.footer-brand span{color:var(--accent)}
+.footer-links{display:flex;gap:24px}
+.footer-links a{color:var(--muted);text-decoration:none;font-size:13px;transition:color .2s}
+.footer-links a:hover{color:var(--text)}
+.footer-copy{color:var(--muted);font-size:13px}
+
+@media(max-width:1000px){.tariffs-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:700px){.tariffs-grid{grid-template-columns:1fr}.extras-grid{grid-template-columns:1fr}.guarantee-block{grid-template-columns:1fr}.compare-table{font-size:12px}.nav-links{display:none}footer{flex-direction:column;text-align:center;padding:24px}}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-logo">Levitsky<span>&</span>Son</a>
+  <div class="nav-links">
+    <a href="/">Главная</a>
+    <a href="/tariffs.html" class="active">Тарифы</a>
+    <a href="/cases.html">Кейсы</a>
+    <a href="/info.html">Информация</a>
+    <a href="/contacts.html">Контакты</a>
+  </div>
+  <div style="display:flex;gap:10px;align-items:center">
+    <a href="https://max.ru/id3123312654_bot" class="nav-cta" target="_blank" style="background:var(--surface2);color:var(--accent);border:1px solid var(--border)">Написать в MAX</a>
+    <div style="display:flex;gap:10px;align-items:center">
+    <a href="https://max.ru/id3123312654_bot" class="nav-cta" target="_blank" style="background:var(--surface2);color:var(--accent);border:1px solid var(--border)">Написать в MAX</a>
+    <a href="https://t.me/Levitsky_Final_Bot" class="nav-cta" target="_blank">Написать в Telegram</a>
+  </div>
+  </div>
+</nav>
+
+<div class="page-hero">
+  <div class="orb"></div>
+  <div class="container">
+    <div class="section-tag">Тарифы</div>
+    <h1>Выберите свой <em>масштаб</em></h1>
+    <p>Все тарифы включают настройку под ключ, обучение команды и гарантию возврата 14 дней</p>
+  </div>
+</div>
+
+<div style="padding:0 0 100px;position:relative;z-index:1">
+<div class="container">
+
+  <!-- PROMO -->
+  <div class="promo-banner">
+    <div class="promo-text">
+      <strong>🎁 Акция — первый месяц в подарок</strong>
+      <p>При подписании договора в течение 5 рабочих дней после консультации</p>
+    </div>
+    <a href="https://t.me/Levitsky_Final_Bot" class="promo-badge" target="_blank">Получить →</a>
+  </div>
+
+  <!-- TARIFF CARDS -->
+  <div class="tariffs-grid">
+
+    <div class="tariff-card">
+      <div class="tariff-name">МИКРО</div>
+      <div class="tariff-for">ИП, малый бизнес</div>
+      <div class="price-impl"><strong>24 900 ₽</strong> разово</div>
+      <div class="price-month"><strong>9 900 ₽</strong> <span>/мес</span></div>
+      <hr class="tariff-divider">
+      <ul class="tariff-features">
+        <li>MAX + Telegram + VK (текст + голос)</li>
+        <li>Голосовые до 50 сообщ/мес</li>
+        <li>Квалификация BANT</li>
+        <li>Борьба с возражениями</li>
+        <li>RAG до 20 документов</li>
+        <li>300 диалогов/мес</li>
+        <li>Уведомление менеджеру</li>
+        <li>Обновление базы 1 раз/мес</li>
+        <li>Поддержка email</li>
+        <li class="na">Интеграция с CRM</li>
+        <li class="na">Голосовой ассистент</li>
+      </ul>
+      <a href="https://t.me/Levitsky_Final_Bot" class="tariff-btn btn-outline" target="_blank">Выбрать МИКРО</a>
+    </div>
+
+    <div class="tariff-card">
+      <div class="tariff-name">СТАРТ</div>
+      <div class="tariff-for">Малый и средний бизнес</div>
+      <div class="price-impl"><strong>49 000 ₽</strong> разово</div>
+      <div class="price-month"><strong>19 900 ₽</strong> <span>/мес</span></div>
+      <hr class="tariff-divider">
+      <ul class="tariff-features">
+        <li>MAX + Telegram + VK + Avito</li>
+        <li>Голосовые до 200 сообщ/мес</li>
+        <li>Квалификация BANT</li>
+        <li>Борьба с возражениями</li>
+        <li>RAG до 50 документов</li>
+        <li>600 диалогов/мес</li>
+        <li>Уведомление менеджеру</li>
+        <li>Обновление базы 1 раз/мес</li>
+        <li>Поддержка чат/email (5/7)</li>
+        <li class="na">Интеграция с CRM</li>
+        <li class="na">Голосовой ассистент</li>
+      </ul>
+      <a href="https://t.me/Levitsky_Final_Bot" class="tariff-btn btn-outline" target="_blank">Выбрать СТАРТ</a>
+    </div>
+
+    <div class="tariff-card tariff-popular">
+      <div class="popular-tag">🔥 Самый популярный</div>
+      <div class="tariff-name">БИЗНЕС</div>
+      <div class="tariff-for">Средний бизнес</div>
+      <div class="price-impl"><strong>99 000 ₽</strong> разово</div>
+      <div class="price-month"><strong>34 900 ₽</strong> <span>/мес</span></div>
+      <hr class="tariff-divider">
+      <ul class="tariff-features">
+        <li>MAX + Telegram + VK + Avito + сайт</li>
+        <li>Голосовые до 500 сообщ/мес</li>
+        <li>Квалификация BANT</li>
+        <li>Борьба с возражениями</li>
+        <li>Интеграция CRM (amoCRM, Bitrix24)</li>
+        <li>Лид автоматически в CRM</li>
+        <li>RAG до 200 документов</li>
+        <li>1000 диалогов/мес</li>
+        <li>Обновление базы 2 раза/мес</li>
+        <li>Персональный менеджер</li>
+        <li class="na">Голосовой ассистент</li>
+      </ul>
+      <a href="https://t.me/Levitsky_Final_Bot" class="tariff-btn btn-fill" target="_blank">Выбрать БИЗНЕС</a>
+    </div>
+
+    <div class="tariff-card">
+      <div class="tariff-name">ПРОФИ</div>
+      <div class="tariff-for">Крупный бизнес</div>
+      <div class="price-impl"><strong>149 000 ₽</strong> разово</div>
+      <div class="price-month"><strong>54 900 ₽</strong> <span>/мес</span></div>
+      <hr class="tariff-divider">
+      <ul class="tariff-features">
+        <li>Все каналы + WhatsApp + VK</li>
+        <li>Голосовые безлимит</li>
+        <li>Голосовой ассистент (звонки)</li>
+        <li>Телефония SIP/АТС · 300 мин/мес</li>
+        <li>Интеграция CRM + 1С</li>
+        <li>RAG до 500 документов</li>
+        <li>Безлимит диалогов</li>
+        <li>3 часа доработок/мес</li>
+        <li>Обновление базы еженедельно</li>
+        <li>Персональный менеджер</li>
+      </ul>
+      <a href="https://t.me/Levitsky_Final_Bot" class="tariff-btn btn-outline" target="_blank">Выбрать ПРОФИ</a>
+    </div>
+
+  </div>
+
+  <!-- COMPARE TABLE -->
+  <div class="compare-section">
+    <div class="compare-title">Подробное сравнение тарифов</div>
+    <table class="compare-table">
+      <thead>
+        <tr>
+          <th>Возможность</th>
+          <th>МИКРО</th>
+          <th>СТАРТ</th>
+          <th class="highlighted">БИЗНЕС</th>
+          <th>ПРОФИ</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Telegram + MAX</td><td class="check">✓</td><td class="check">✓</td><td class="highlighted check">✓</td><td class="check">✓</td></tr>
+        <tr><td>Avito</td><td class="cross">—</td><td class="check">✓</td><td class="highlighted check">✓</td><td class="check">✓</td></tr>
+        <tr><td>Виджет на сайт</td><td class="cross">—</td><td class="cross">—</td><td class="highlighted check">✓</td><td class="check">✓</td></tr>
+        <tr><td>WhatsApp</td><td class="cross">—</td><td class="cross">—</td><td class="highlighted cross">—</td><td class="check">✓</td></tr>
+        <tr><td>Голосовой ассистент (звонки)</td><td class="cross">—</td><td class="cross">—</td><td class="highlighted cross">—</td><td class="check">✓</td></tr>
+        <tr><td>Телефония SIP/АТС</td><td class="cross">—</td><td class="cross">—</td><td class="highlighted cross">—</td><td class="check">300 мин/мес</td></tr>
+        <tr><td>Квалификация BANT</td><td class="check">✓</td><td class="check">✓</td><td class="highlighted check">✓</td><td class="check">✓</td></tr>
+        <tr><td>Борьба с возражениями</td><td class="check">✓</td><td class="check">✓</td><td class="highlighted check">✓</td><td class="check">✓</td></tr>
+        <tr><td>Интеграция с CRM</td><td class="cross">—</td><td class="cross">—</td><td class="highlighted check">✓</td><td class="check">✓ + 1С</td></tr>
+        <tr><td>Лимит диалогов/мес</td><td>300</td><td>600</td><td class="highlighted">1000</td><td>Безлимит</td></tr>
+        <tr><td>Документов в RAG</td><td>20</td><td>50</td><td class="highlighted">200</td><td>500</td></tr>
+        <tr><td>Обновление базы знаний</td><td>1 раз/мес</td><td>1 раз/мес</td><td class="highlighted">2 раза/мес</td><td>Еженедельно</td></tr>
+        <tr><td>Доработки</td><td class="cross">—</td><td class="cross">—</td><td class="highlighted cross">—</td><td class="check">3 ч/мес</td></tr>
+        <tr><td>Поддержка</td><td>Email</td><td>Чат/email 5/7</td><td class="highlighted">Персональный менеджер</td><td>Персональный менеджер</td></tr>
+        <tr><td><strong>Внедрение (разово)</strong></td><td><strong>24 900 ₽</strong></td><td><strong>49 000 ₽</strong></td><td class="highlighted"><strong>99 000 ₽</strong></td><td><strong>149 000 ₽</strong></td></tr>
+        <tr><td><strong>Сопровождение/мес</strong></td><td><strong>9 900 ₽</strong></td><td><strong>19 900 ₽</strong></td><td class="highlighted"><strong>34 900 ₽</strong></td><td><strong>54 900 ₽</strong></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- EXTRAS -->
+  <div class="section-tag" style="margin-bottom:20px">Дополнительно</div>
+  <div class="extras-grid">
+    <div class="extra-card">
+      <div class="extra-icon">📚</div>
+      <div class="extra-title">Расширение базы знаний</div>
+      <div class="extra-price">2 000 ₽/мес</div>
+      <div class="extra-desc">+100 документов в RAG. Для любого тарифа.</div>
+    </div>
+    <div class="extra-card">
+      <div class="extra-icon">📞</div>
+      <div class="extra-title">Доп. минуты телефонии</div>
+      <div class="extra-price">600 ₽/мес</div>
+      <div class="extra-desc">+100 минут сверх лимита. Только тариф ПРОФИ.</div>
+    </div>
+    <div class="extra-card">
+      <div class="extra-icon">🎙️</div>
+      <div class="extra-title">Голосовые сообщения сверх лимита</div>
+      <div class="extra-price">2 ₽/сообщение</div>
+      <div class="extra-desc">Автоматически при превышении лимита.</div>
+    </div>
+  </div>
+
+  <!-- GUARANTEE -->
+  <div class="guarantee-block">
+    <div>
+      <div class="section-tag">Гарантия</div>
+      <div class="guarantee-title">Не принесёт лидов —<br><em>вернём 100% стоимости</em></div>
+      <p class="guarantee-text">Если в течение 14 дней после запуска ассистент не принесёт ни одного квалифицированного лида по методологии BANT — возвращаем 100% стоимости внедрения. Без вопросов и бюрократии. Просто напишите нам.</p>
+    </div>
+    <div class="guarantee-badge">
+      <div class="guarantee-badge-icon">🛡️</div>
+      <div class="guarantee-badge-text">Гарантия<br>возврата<br>14 дней</div>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-block">
+    <h2>Не знаете какой тариф <em>подойдёт?</em></h2>
+    <p>Напишите в Telegram — подберём вместе за 10 минут</p>
+    <a href="https://t.me/Levitsky_Final_Bot" class="btn-primary" target="_blank">✈️ Написать в Telegram</a>
+  </div>
+
+</div>
+</div>
+
+<footer>
+  <div class="footer-brand">Levitsky<span>&</span>Son AI Solutions</div>
+  <div class="footer-links">
+    <a href="/">Главная</a><a href="/tariffs.html">Тарифы</a><a href="/cases.html">Кейсы</a>
+    <a href="/contacts.html">Контакты</a><a href="/privacy.html">Конфиденциальность</a><a href="/offer.html">Оферта</a>
+  </div>
+  <div class="footer-copy">© 2026 ИП Левицкая Анна Юрьевна</div>
+</footer>
+</body>
+</html>
