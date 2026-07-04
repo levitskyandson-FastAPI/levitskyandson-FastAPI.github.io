@@ -126,21 +126,8 @@
 
   // ---- История ----
   function loadHistory(clientId) {
-    var sid = getSession(clientId);
-    fetch(HISTORY_EP + "?client_id=" + encodeURIComponent(clientId) + "&user_id=" + encodeURIComponent(sid))
-      .then(function (r) { return r.ok ? r.json() : null; })
-      .then(function (data) {
-        if (data && data.messages && data.messages.length) {
-          data.messages.forEach(function (m) {
-            addMsg(m.content || m.text || "", m.role === "user" ? "user" : "bot");
-          });
-        } else {
-          addMsg("Здравствуйте! Меня зовут " + (current.name || "кандидат") + ". Задайте мне любые вопросы — проведите собеседование и решите, брать ли меня в команду.", "bot");
-        }
-      })
-      .catch(function () {
-        addMsg("Здравствуйте! Меня зовут " + (current.name || "кандидат") + ". Задайте мне любой вопрос.", "bot");
-      });
+    // Показываем приветствие сразу (история не запрашивается, чтобы не ловить 405)
+    addMsg("Здравствуйте! Меня зовут " + (current.name || "кандидат") + ". Задайте мне любые вопросы — проведите собеседование и решите, брать ли меня в команду.", "bot");
   }
 
   // ---- Отправка ----
@@ -155,7 +142,7 @@
     fetch(CHAT_EP, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ client_id: current.clientId, user_id: sid, message: text })
+      body: JSON.stringify({ client_id: current.clientId, message: text, session_id: sid })
     })
       .then(function (r) { return r.json(); })
       .then(function (data) {
