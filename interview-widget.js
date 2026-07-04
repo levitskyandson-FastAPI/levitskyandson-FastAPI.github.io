@@ -126,8 +126,27 @@
 
   // ---- История ----
   function loadHistory(clientId) {
-    // Показываем приветствие сразу (история не запрашивается, чтобы не ловить 405)
-    addMsg("Здравствуйте! Меня зовут " + (current.name || "кандидат") + ". Задайте мне любые вопросы — проведите собеседование и решите, брать ли меня в команду.", "bot");
+    var sid = getSession(clientId);
+    var greeted = "Здравствуйте! Меня зовут " + (current.name || "кандидат") + ". Задайте мне любые вопросы — проведите собеседование и решите, брать ли меня в команду.";
+    fetch(HISTORY_EP, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ client_token: clientId, session_id: sid })
+    })
+      .then(function (r) { return r.ok ? r.json() : null; })
+      .then(function (data) {
+        var msgs = data && (data.messages || data.conversation);
+        if (msgs && msgs.length) {
+          msgs.forEach(function (m) {
+            var who = (m.role === "user" || m.is_user) ? "user" : "bot";
+            var txt = m.content || m.text || m.message || "";
+            if (txt) addMsg(txt, who);
+          });
+        } else {
+          addMsg(greeted, "bot");
+        }
+      })
+      .catch(function () { addMsg(greeted, "bot"); });
   }
 
   // ---- Отправка ----
