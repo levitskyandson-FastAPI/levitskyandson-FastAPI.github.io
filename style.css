@@ -1,0 +1,545 @@
+:root{
+  --ink:#000000;
+  --paper:#FFFFFF;
+  --smoke:#9A9A9A;
+  --line:#222222;
+  --card:#0D0D0D;
+  --card-line:#1F1F1F;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:0}
+body{
+  font-family:'Inter','Helvetica Neue',Arial,sans-serif;
+  background:var(--ink);color:var(--paper);
+  line-height:1.5;-webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:1480px;margin:0 auto;padding:0 48px}
+a{color:inherit;text-decoration:none}
+
+/* NAV */
+nav{position:sticky;top:0;z-index:100;background:rgba(0,0,0,.8);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;height:76px}
+.logo{font-weight:800;font-size:21px;letter-spacing:-.02em}
+.nav-links{display:flex;gap:38px;font-size:15px;color:#CFCFCF;align-items:center}
+.nav-links a:hover{color:var(--paper)}
+.has-drop{position:relative;cursor:pointer}
+.drop{
+  position:absolute;top:140%;left:50%;transform:translateX(-50%) translateY(8px);
+  background:#0A0A0A;border:1px solid var(--card-line);border-radius:18px;
+  padding:14px;width:340px;opacity:0;visibility:hidden;transition:all .22s;
+  box-shadow:0 24px 60px rgba(0,0,0,.6);
+}
+.has-drop:hover .drop{opacity:1;visibility:visible;transform:translateX(-50%) translateY(0)}
+.drop-item{display:flex;align-items:center;gap:14px;padding:14px;border-radius:12px;transition:background .18s}
+.drop-item:hover{background:#1A1A1A}
+.drop-ava{width:46px;height:46px;border-radius:50%;background:linear-gradient(135deg,#1f1f1f,#333);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:18px;flex-shrink:0}
+.drop-name{font-weight:700;font-size:16px}
+.drop-role{font-size:13px;color:var(--smoke);margin-top:2px}
+.nav-cta{background:var(--paper);color:var(--ink);padding:12px 24px;border-radius:100px;font-size:14px;font-weight:600;transition:opacity .2s}
+.nav-cta:hover{opacity:.85}
+@media(max-width:900px){.nav-links{display:none}}
+
+/* BUTTONS */
+.btn-primary{background:var(--paper);color:var(--ink);padding:21px 44px;border-radius:100px;font-size:18px;font-weight:600;display:inline-block;transition:opacity .2s,transform .15s}
+.btn-primary:hover{opacity:.88;transform:translateY(-1px)}
+.btn-ghost{border:1.5px solid #3A3A3A;color:var(--paper);padding:21px 44px;border-radius:100px;font-size:18px;font-weight:600;display:inline-block;transition:border-color .2s,background .2s}
+.btn-ghost:hover{border-color:var(--paper);background:#111}
+
+/* HERO */
+.hero{padding:130px 0 100px}
+.hero h1{font-size:clamp(64px,11vw,168px);font-weight:800;line-height:.9;letter-spacing:-.045em}
+.hero-sub{margin-top:32px;font-size:clamp(18px,2vw,22px);color:var(--smoke);max-width:54ch;line-height:1.5}
+.hero-actions{margin-top:38px;display:flex;gap:16px;flex-wrap:wrap}
+
+/* STATS */
+.strip{border-bottom:1px solid var(--line);padding:52px 0}
+.strip-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:32px}
+.stat .num{font-size:clamp(38px,4.5vw,58px);font-weight:800;letter-spacing:-.03em}
+.stat .lbl{margin-top:8px;font-size:14px;color:var(--smoke)}
+@media(max-width:760px){.strip-grid{grid-template-columns:repeat(2,1fr);gap:40px 24px}}
+
+/* SECTIONS */
+section{padding:28px 0}
+.eyebrow{font-size:13px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--smoke);margin-bottom:22px}
+.section-title{font-size:clamp(30px,3.6vw,48px);font-weight:800;letter-spacing:-.025em;line-height:1.04;max-width:22ch}
+.section-lead{margin-top:16px;font-size:17px;color:var(--smoke);max-width:60ch;line-height:1.5}
+
+/* TEAM */
+.team-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:8px}
+.card{border:1px solid var(--card-line);border-radius:22px;padding:0;background:var(--card);overflow:hidden;display:flex;flex-direction:column;transition:border-color .25s,transform .25s}
+.card:hover{border-color:#3A3A3A;transform:translateY(-5px)}
+.card-media{height:130px;background:linear-gradient(135deg,#141414,#1f1f1f);display:flex;align-items:center;justify-content:center;position:relative;border-bottom:1px solid var(--card-line)}
+.card-media .big-letter{font-size:84px;font-weight:800;color:#2E2E2E}
+.play-badge{position:absolute;bottom:16px;right:16px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);backdrop-filter:blur(8px);padding:7px 14px;border-radius:100px;font-size:12px;color:#CFCFCF;display:flex;align-items:center;gap:7px}
+.card-body{padding:30px 28px 32px;display:flex;flex-direction:column;flex-grow:1}
+.card h3{font-size:28px;font-weight:800;letter-spacing:-.02em}
+.card .role{font-size:15px;color:#CFCFCF;margin-top:4px}
+.card .desc{font-size:15px;color:var(--smoke);margin-top:18px;line-height:1.6;flex-grow:1}
+.status{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:600;margin-top:22px}
+.status.live,.p-status.live{color:#4ADE80}
+.status.soon,.p-status.soon{color:#777}
+.dot{width:7px;height:7px;border-radius:50%;background:currentColor}
+.card-link{margin-top:22px;font-size:15px;font-weight:600;color:var(--paper);display:inline-flex;align-items:center;gap:8px;transition:gap .2s}
+.card:hover .card-link{gap:13px}
+@media(max-width:900px){.team-grid{grid-template-columns:1fr;gap:20px}}
+
+/* PAIN */
+.pain-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--line);margin-top:40px;border:1px solid var(--line);border-radius:16px;overflow:hidden}
+.pain-cell{background:var(--ink);padding:34px}
+.pain-cell h4{font-size:20px;font-weight:700}
+.pain-cell p{margin-top:12px;color:var(--smoke);font-size:16px;line-height:1.6}
+@media(max-width:760px){.pain-grid{grid-template-columns:1fr}}
+
+/* COMPARE */
+.ctable{margin-top:62px;border:1px solid var(--line);border-radius:18px;overflow:hidden}
+.crow{display:grid;grid-template-columns:1.4fr 1fr 1fr;border-bottom:1px solid var(--line)}
+.crow:last-child{border-bottom:none}
+.crow > div{padding:22px 28px;display:flex;align-items:center;font-size:16px}
+.crow .lab{color:var(--smoke)}
+.crow .human{border-left:1px solid var(--line);color:#CFCFCF}
+.crow .ai{border-left:1px solid var(--line);background:#0E0E0E;font-weight:600;color:var(--paper)}
+.crow.head > div{font-weight:800;font-size:17px}
+@media(max-width:760px){.crow{grid-template-columns:1fr}.crow>div{border-left:none!important;border-bottom:1px solid var(--line)}.crow .lab{background:#0E0E0E;font-weight:700}}
+
+/* PROCESS */
+.steps{margin-top:44px;display:grid;grid-template-columns:repeat(3,1fr);gap:40px}
+.step .step-n{font-size:14px;font-weight:700;color:var(--smoke);letter-spacing:.1em}
+.step h4{font-size:22px;font-weight:700;margin-top:16px}
+.step p{margin-top:12px;color:var(--smoke);font-size:16px;line-height:1.6}
+@media(max-width:760px){.steps{grid-template-columns:1fr;gap:36px}}
+
+/* GUARANTEE */
+.guarantee{text-align:center}
+.guarantee .section-title{margin:0 auto}
+.guarantee p{margin:28px auto 0;max-width:58ch;color:var(--smoke);font-size:18px;line-height:1.6}
+.guarantee .btn-primary{margin-top:42px}
+
+/* FOOTER */
+footer{padding:40px 0 32px;border-top:1px solid var(--line)}
+.foot-inner{display:flex;justify-content:space-between;flex-wrap:wrap;gap:32px}
+.foot-links{display:flex;gap:28px;font-size:15px;color:var(--smoke);flex-wrap:wrap}
+.foot-links a:hover{color:var(--paper)}
+.foot-copy{margin-top:24px;font-size:13px;color:#666}
+
+/* ——— PROFILE PAGE ——— */
+.profile-hero{padding:60px 0 80px;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;min-height:calc(100vh - 220px)}
+.profile-video{aspect-ratio:auto;height:calc(100vh - 200px);max-height:700px;background:linear-gradient(135deg,#141414,#222);border:1px solid var(--card-line);border-radius:24px;display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;overflow:hidden}
+.profile-video .vbig{font-size:120px;font-weight:800;color:#2A2A2A}
+.video-note{position:absolute;bottom:22px;left:0;right:0;text-align:center;font-size:13px;color:#666}
+.play-circle{width:76px;height:76px;border-radius:50%;background:rgba(255,255,255,.95);display:flex;align-items:center;justify-content:center;position:absolute;cursor:pointer;transition:transform .2s}
+.play-circle:hover{transform:scale(1.08)}
+.play-circle::after{content:'';border-left:22px solid var(--ink);border-top:13px solid transparent;border-bottom:13px solid transparent;margin-left:5px}
+.profile-info .back{font-size:14px;color:var(--smoke);margin-bottom:28px;display:inline-block}
+.profile-info .back:hover{color:var(--paper)}
+.profile-info .p-role{font-size:14px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--smoke)}
+.profile-info h1{font-size:clamp(48px,6vw,84px);font-weight:800;letter-spacing:-.04em;line-height:.95;margin-top:14px}
+.profile-info .p-tag{font-size:21px;color:#CFCFCF;margin-top:24px;line-height:1.5;max-width:46ch}
+.profile-info .p-status{display:inline-flex;align-items:center;gap:9px;font-size:14px;font-weight:600;margin-top:28px}
+.profile-info .p-actions{margin-top:36px;display:flex;gap:14px;flex-wrap:wrap}
+@media(max-width:900px){.profile-hero{grid-template-columns:1fr;gap:40px}.profile-video{max-width:420px}}
+
+.skills{padding:100px 0;border-top:1px solid var(--line)}
+.skills-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);margin-top:56px;border:1px solid var(--line);border-radius:16px;overflow:hidden}
+.skill{background:var(--ink);padding:38px}
+.skill .sk-num{font-size:13px;color:var(--smoke);letter-spacing:.1em;font-weight:600}
+.skill h4{font-size:19px;font-weight:700;margin-top:14px}
+.skill p{margin-top:10px;color:var(--smoke);font-size:15px;line-height:1.6}
+@media(max-width:760px){.skills-grid{grid-template-columns:1fr}}
+
+/* ——— BIG DROPDOWN (как 11x) ——— */
+.has-drop{position:relative}
+.has-drop > span{cursor:pointer;display:inline-flex;align-items:center;gap:6px}
+.mega{
+  position:fixed;left:50%;top:76px;transform:translateX(-50%) translateY(10px);
+  background:#0A0A0A;border:1px solid var(--card-line);border-radius:22px;
+  padding:18px;width:min(940px,calc(100vw - 48px));
+  display:grid;grid-template-columns:repeat(3,1fr);gap:16px;
+  opacity:0;visibility:hidden;transition:all .24s;
+  box-shadow:0 30px 80px rgba(0,0,0,.7);z-index:200;
+}
+.has-drop:hover .mega{opacity:1;visibility:visible;transform:translateX(-50%) translateY(0)}
+.mega-card{
+  border:1px solid var(--card-line);border-radius:16px;padding:22px;
+  background:#111;transition:border-color .2s,background .2s;display:block;
+}
+.mega-card:hover{border-color:#3A3A3A;background:#161616}
+.mega-top{display:flex;align-items:center;gap:14px}
+.mega-ava{width:54px;height:54px;border-radius:50%;background:linear-gradient(135deg,#1f1f1f,#333);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:22px;flex-shrink:0}
+.mega-name{font-weight:700;font-size:18px;display:flex;align-items:center;gap:8px}
+.mega-role{font-size:13px;color:var(--smoke);margin-top:3px}
+.mega-arrow{margin-left:auto;color:#555;font-size:18px}
+.mega-card:hover .mega-arrow{color:var(--paper)}
+.mega-uses{margin-top:18px;padding-top:16px;border-top:1px solid var(--card-line)}
+.mega-uses .uc-label{font-size:11px;letter-spacing:.12em;color:#666;font-weight:600;text-transform:uppercase;margin-bottom:12px}
+.mega-uses .uc{font-size:14px;color:#BBB;padding:7px 0;transition:color .15s}
+.mega-card:hover .uc{color:#DDD}
+.mega-stat{display:inline-flex;align-items:center;gap:7px;font-size:12px;font-weight:600;margin-top:4px}
+.mega-stat.live{color:#4ADE80}
+.mega-stat.soon{color:#777}
+@media(max-width:900px){.mega{display:none}}
+
+/* Поднимаем hero выше */
+.hero{padding:80px 0 64px}
+.profile-hero{padding:60px 0 80px;align-items:center;min-height:calc(100vh - 220px)}
+
+
+/* ——— HOW ROWS (три сотрудника) ——— */
+.how-row{display:grid;grid-template-columns:160px 1fr;gap:40px;padding:36px 0;border-top:1px solid var(--line);align-items:start}
+.how-row:first-of-type{margin-top:36px}
+.how-label{display:flex;flex-direction:column;gap:4px;padding-top:6px}
+.hl-name{font-size:24px;font-weight:800;letter-spacing:-.02em}
+.hl-role{font-size:13px;color:var(--smoke);letter-spacing:.1em;text-transform:uppercase}
+.how-row .steps{margin-top:0;gap:32px}
+.how-row .step h4{font-size:18px;margin-top:12px}
+.how-row .step p{font-size:14px;margin-top:8px}
+.how-row .step .step-n{font-size:12px}
+@media(max-width:900px){.how-row{grid-template-columns:1fr;gap:20px}.how-row .steps{grid-template-columns:1fr;gap:24px}}
+
+
+/* ——— LEGAL PAGES (оферта, конфиденциальность) ——— */
+.legal-hero{padding:48px 0 40px;border-bottom:1px solid var(--line)}
+.legal-hero h1{font-size:clamp(40px,5.5vw,72px);font-weight:800;letter-spacing:-.035em;line-height:1.0}
+.legal-hero .lh-meta{margin-top:20px;color:var(--smoke);font-size:16px}
+.legal-body{padding:60px 0 80px;max-width:820px}
+.legal-body .intro-card{background:var(--card);border:1px solid var(--card-line);border-radius:16px;padding:28px 32px;margin-bottom:48px}
+.legal-body .intro-card p{margin:6px 0;font-size:16px;color:#CFCFCF}
+.legal-body .intro-card strong{color:var(--paper)}
+.legal-body h2{font-size:26px;font-weight:800;letter-spacing:-.02em;margin:44px 0 18px;padding-top:28px;border-top:1px solid var(--line)}
+.legal-body h2:first-of-type{border-top:none;padding-top:0;margin-top:0}
+.legal-body h2 .num{color:var(--smoke);margin-right:14px;font-weight:700}
+.legal-body p{font-size:16px;color:#C8C8C8;line-height:1.7;margin:14px 0}
+.legal-body ul{margin:16px 0;padding-left:0;list-style:none}
+.legal-body li{font-size:16px;color:#C8C8C8;line-height:1.6;margin:10px 0;padding-left:24px;position:relative}
+.legal-body li::before{content:'—';position:absolute;left:0;color:var(--smoke)}
+.legal-body strong{color:var(--paper)}
+.legal-body a{color:var(--paper);text-decoration:underline;text-underline-offset:3px}
+.rights-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin:24px 0}
+.right-card{background:var(--card);border:1px solid var(--card-line);border-radius:14px;padding:22px}
+.right-card .rc-title{font-weight:700;font-size:16px;margin-bottom:8px}
+.right-card .rc-desc{font-size:14px;color:var(--smoke);line-height:1.5}
+@media(max-width:760px){.rights-grid{grid-template-columns:1fr}}
+
+
+/* реквизиты + акцент-блоки оферты */
+.accent-box{background:var(--card);border:1px solid var(--card-line);border-left:3px solid var(--paper);border-radius:12px;padding:24px 28px;margin:24px 0}
+.accent-box .ab-title{font-weight:700;font-size:17px;margin-bottom:10px}
+.accent-box p{margin:0;color:#C8C8C8}
+.req-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:14px;overflow:hidden;margin:24px 0}
+.req-cell{background:var(--ink);padding:22px 26px}
+.req-cell .rq-label{font-size:12px;color:var(--smoke);letter-spacing:.08em;text-transform:uppercase;margin-bottom:6px}
+.req-cell .rq-val{font-size:16px;color:var(--paper);font-weight:600}
+@media(max-width:760px){.req-grid{grid-template-columns:1fr}}
+
+.hero-accent{display:inline-block}
+
+
+/* ——— ТАРИФЫ ——— */
+.tariff-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:56px;max-width:1100px;margin-left:auto;margin-right:auto}
+.tcard{border:1px solid var(--card-line);border-radius:20px;padding:32px 26px;background:var(--card);display:flex;flex-direction:column;transition:border-color .25s,transform .25s}
+.tcard:hover{border-color:#3A3A3A;transform:translateY(-4px)}
+.tcard.featured{border-color:var(--paper)}
+.tcard .t-badge{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink);background:var(--paper);padding:5px 12px;border-radius:100px;margin-bottom:18px;align-self:flex-start}
+.tcard h3{font-size:26px;font-weight:800;letter-spacing:-.02em}
+.tcard .t-desc{font-size:15px;color:var(--smoke);margin-top:10px;line-height:1.5}
+.tcard .t-price{margin-top:26px;padding-top:26px;border-top:1px solid var(--card-line)}
+.tcard .t-price .pmain{font-size:34px;font-weight:800;letter-spacing:-.03em;line-height:1}
+.tcard .t-price .pnote{font-size:13px;color:var(--smoke);margin-top:6px}
+.tcard .t-price .psub{font-size:17px;font-weight:700;margin-top:14px}
+.tcard .t-price .psub .psub-lbl{display:block;font-size:12px;font-weight:500;color:var(--smoke);margin-bottom:2px}
+.tcard .t-price .psub b{font-weight:800}
+.tcard .t-feats{margin:26px 0;list-style:none;flex-grow:1}
+.tcard .t-feats li{font-size:15px;color:#C8C8C8;padding:9px 0 9px 28px;position:relative;line-height:1.5}
+.tcard .t-feats li::before{content:'✓';position:absolute;left:0;color:var(--paper);font-weight:700}
+.tcard .t-btn{text-align:center;padding:16px;border-radius:100px;font-size:16px;font-weight:600;transition:all .2s}
+.tcard .t-btn.solid{background:var(--paper);color:var(--ink)}
+.tcard .t-btn.solid:hover{opacity:.85}
+.tcard .t-btn.line{border:1.5px solid #3A3A3A;color:var(--paper)}
+.tcard .t-btn.line:hover{border-color:var(--paper)}
+@media(max-width:1100px){.tariff-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:640px){.tariff-grid{grid-template-columns:1fr}}
+
+/* ——— ФОРМА ——— */
+.form-wrap{max-width:760px;margin-top:48px}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.field{margin-bottom:22px}
+.field label{display:block;font-size:13px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--smoke);margin-bottom:10px}
+.field input,.field select,.field textarea{
+  width:100%;background:var(--card);border:1px solid var(--card-line);border-radius:12px;
+  padding:15px 18px;font-size:16px;color:var(--paper);font-family:inherit;transition:border-color .2s;
+}
+.field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--paper)}
+.field input::placeholder,.field textarea::placeholder{color:#555}
+.field textarea{min-height:130px;resize:vertical}
+.form-consent{display:flex;gap:12px;align-items:flex-start;margin:24px 0;font-size:14px;color:var(--smoke);line-height:1.5}
+.form-consent input{margin-top:3px;flex-shrink:0;width:18px;height:18px;accent-color:var(--paper)}
+.form-consent a{color:var(--paper);text-decoration:underline}
+.form-submit{width:100%;background:var(--paper);color:var(--ink);border:none;padding:18px;border-radius:100px;font-size:17px;font-weight:700;cursor:pointer;transition:opacity .2s;font-family:inherit}
+.form-submit:hover{opacity:.85}
+.tariff-pick{background:var(--card);border:1px solid var(--card-line);border-radius:14px;padding:18px 22px;margin-bottom:32px;display:flex;align-items:center;justify-content:space-between}
+.tariff-pick .tp-label{font-size:13px;color:var(--smoke);text-transform:uppercase;letter-spacing:.06em}
+.tariff-pick .tp-val{font-size:18px;font-weight:700;margin-top:4px}
+@media(max-width:760px){.form-row{grid-template-columns:1fr}}
+
+.tcard .t-feats li.feat-opt::before{content:'✓';color:var(--paper)}
+.tcard .t-feats li.feat-opt{color:#C8C8C8}
+.tcard .t-feats li.feat-no::before{content:'—';color:#555}
+.tcard .t-feats li.feat-no{color:#666}
+
+/* Якорные секции: каждая занимает экран, начинается чисто под меню, фон перекрывает предыдущую */
+.anchor-full{min-height:100vh;background:var(--ink);padding-top:120px;padding-bottom:60px;box-sizing:border-box;scroll-margin-top:0}
+#contacts.anchor-full{min-height:calc(100vh - 220px);padding-bottom:20px}
+.anchor-full > .wrap{width:100%}
+
+/* ===== Секция «Почему Анна за пределами человека» (стиль 11x) ===== */
+.beyond{padding:100px 0;border-top:1px solid var(--line)}
+.beyond-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);margin-top:56px;border:1px solid var(--line);border-radius:16px;overflow:hidden}
+.bcard{background:var(--ink);padding:38px;transition:background .2s}
+.bcard:hover{background:#0c0c0c}
+.bcard .bc-ic{font-size:22px;line-height:1;margin-bottom:18px;display:block}
+.bcard h4{font-size:19px;font-weight:700}
+.bcard p{margin-top:10px;color:var(--smoke);font-size:15px;line-height:1.6}
+@media(max-width:900px){.beyond-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:600px){.beyond-grid{grid-template-columns:1fr}}
+
+/* Фото-аватар в мега-меню */
+.mega-ava img{width:100%;height:100%;object-fit:cover;border-radius:50%;display:block}
+.mega-ava.has-photo{background:none}
+
+/* ===== Фоны в стиле 11x ===== */
+/* Коричнево-бежевый градиент для страниц персон (Анна/Денис/Галина) */
+.hero-11x-warm{
+  background: linear-gradient(160deg, #8a6f52 0%, #6b5540 45%, #3a2f24 100%);
+  color:#fff;
+}
+/* Тёмный чарко-зелёный для блока сравнения */
+.bg-11x-dark{
+  background: linear-gradient(180deg, #1c2b28 0%, #16211f 100%);
+  color:#fff;
+}
+/* Белый блок (Решения, Вся команда) */
+.bg-white-block{
+  background:#fff;
+  color:#111;
+}
+.bg-white-block .section-title,
+.bg-white-block h4{color:#111}
+.bg-white-block .section-lead,
+.bg-white-block p{color:#444}
+.bg-white-block .eyebrow{color:#666}
+.bg-white-block .pain-cell,
+.bg-white-block .team-card{
+  background:#f6f6f4;
+  border:1px solid #e5e5e0;
+}
+.bg-white-block .card-link{color:#111}
+.bg-white-block .status.live{color:#1B7A3D}
+.bg-white-block .status.soon{color:#999}
+
+/* hero персон 11x — фон на всю ширину */
+.profile-hero.hero-11x-warm{
+  position:relative;
+  padding:70px 48px 80px;
+  border-radius:0 0 28px 28px;
+  margin-bottom:20px;
+}
+.profile-hero.hero-11x-warm::before{
+  content:"";
+  position:absolute;
+  top:0; left:50%;
+  width:100vw; height:100%;
+  transform:translateX(-50%);
+  background:linear-gradient(160deg,#8a6f52 0%,#6b5540 45%,#3a2f24 100%);
+  z-index:-1;
+}
+.profile-hero.hero-11x-warm .p-role{color:#e8dcc8}
+.profile-hero.hero-11x-warm .p-tag{color:#f0e8dc}
+.profile-hero.hero-11x-warm .back{color:#d8c9b0}
+.profile-hero.hero-11x-warm .back:hover{color:#fff}
+
+/* перебиваем чёрный фон .anchor-full */
+section.anchor-full.bg-white-block{background:#fff}
+section.anchor-full.bg-11x-dark{background:linear-gradient(180deg,#1c2b28 0%,#16211f 100%)}
+/* тёмно-зелёный блок — читаемость */
+.bg-11x-dark .section-title,.bg-11x-dark h4,.bg-11x-dark .eyebrow{color:#fff}
+.bg-11x-dark .section-lead,.bg-11x-dark p{color:#c5d0cd}
+
+/* ===== ВСЯ страница персон в фоне 11x ===== */
+body.page-warm{
+  background:linear-gradient(175deg,#8a6f52 0%,#5c4a38 30%,#2e2620 70%,#1a1613 100%) !important;
+  background-attachment:fixed;
+}
+/* убираем отдельный фон с hero (теперь весь body крашен) */
+body.page-warm .profile-hero.hero-11x-warm{padding:70px 0 80px;border-radius:0;margin-bottom:0}
+body.page-warm .profile-hero.hero-11x-warm::before{display:none}
+/* секции внутри — прозрачные, чтобы был виден фон body */
+body.page-warm .beyond,
+body.page-warm .guarantee{background:transparent !important}
+/* nav и footer на странице персон — полупрозрачные тёмные, чтобы не выбивались */
+body.page-warm nav{background:rgba(26,22,19,.85);backdrop-filter:blur(10px)}
+body.page-warm footer{background:rgba(20,17,14,.6)}
+/* читаемость текста на тёплом фоне */
+body.page-warm .beyond .section-title,
+body.page-warm .guarantee .section-title,
+body.page-warm .beyond h4{color:#fff}
+body.page-warm .beyond .eyebrow{color:#e8dcc8}
+body.page-warm .beyond p,
+body.page-warm .guarantee p{color:#f0e8dc}
+body.page-warm .bcard{
+  background:rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.12);
+}
+
+/* ===== Таблица сравнения на тёмно-зелёном фоне ===== */
+.bg-11x-dark .ctable{border-color:rgba(255,255,255,.14)}
+.bg-11x-dark .crow{border-bottom-color:rgba(255,255,255,.12)}
+.bg-11x-dark .crow .lab{color:#a8b8b4}
+.bg-11x-dark .crow .human{border-left-color:rgba(255,255,255,.12);color:#c5d0cd}
+.bg-11x-dark .crow .ai{
+  border-left-color:rgba(255,255,255,.12);
+  background:linear-gradient(180deg,rgba(70,150,115,.20) 0%,rgba(46,120,90,.10) 100%);
+  color:#fff;
+}
+.bg-11x-dark .crow.head .ai{
+  background:linear-gradient(180deg,rgba(90,180,140,.32) 0%,rgba(70,150,115,.18) 100%);
+}
+.bg-11x-dark .section-lead{color:#c5d0cd}
+
+/* ===== Блок "Сценарии использования" (pain) — коричневый градиент 11x ===== */
+section#pain{
+  background:linear-gradient(175deg,#8a6f52 0%,#5c4a38 40%,#2e2620 100%) !important;
+}
+section#pain .section-title,section#pain h4{color:#fff !important}
+section#pain .section-lead,section#pain p{color:#f0e8dc !important}
+section#pain .eyebrow{color:#e8dcc8 !important}
+section#pain .pain-cell{
+  background:rgba(255,255,255,.06) !important;
+  border:1px solid rgba(255,255,255,.12) !important;
+}
+
+/* ===== Зелёная зона: how + guarantee + contacts ===== */
+/* заголовки и текст */
+.bg-11x-dark .section-title,.bg-11x-dark h4,.bg-11x-dark .eyebrow{color:#fff}
+.bg-11x-dark p,.bg-11x-dark .section-lead{color:#c5d0cd}
+/* блок "как работает" — карточки шагов */
+.bg-11x-dark .how-label .hl-name{color:#fff}
+.bg-11x-dark .how-label .hl-role{color:#8fb3a5}
+.bg-11x-dark .step{
+  background:rgba(255,255,255,.05);
+  border:1px solid rgba(255,255,255,.10);
+}
+.bg-11x-dark .step-n{color:#8fb3a5}
+.bg-11x-dark .step h4{color:#fff}
+.bg-11x-dark .step p{color:#c5d0cd}
+.bg-11x-dark .how-row{border-color:rgba(255,255,255,.12)}
+/* контакты */
+.bg-11x-dark .contact-cell,.bg-11x-dark .c-cell{
+  background:rgba(255,255,255,.05);
+  border:1px solid rgba(255,255,255,.10);
+}
+.bg-11x-dark a{color:#fff}
+.bg-11x-dark .contact-cell a,.bg-11x-dark .c-cell a{color:#8fdcc0}
+/* accent-box (гарантия) на зелёном */
+.bg-11x-dark .accent-box{
+  background:rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.14);
+}
+
+/* тонкая акцентная линия слева у столбца ИИ */
+.bg-11x-dark .crow .ai{position:relative}
+.bg-11x-dark .ctable{position:relative}
+/* мягкая вертикальная подсветка всего ИИ-столбца */
+.bg-11x-dark .crow .ai::before{
+  content:"";
+  position:absolute;left:0;top:0;bottom:0;width:2px;
+  background:linear-gradient(180deg,rgba(120,220,170,.6),rgba(120,220,170,0));
+}
+.bg-11x-dark .crow.head .ai::before{background:rgba(120,220,170,.7)}
+
+/* ========== ЕДИНЫЙ КОРИЧНЕВЫЙ ФОН 11x для блоков главной ========== */
+section.bg-11x-warm{
+  background:linear-gradient(175deg,#8a6f52 0%,#5c4a38 40%,#2e2620 100%) !important;
+}
+/* заголовки и текст */
+.bg-11x-warm .section-title,.bg-11x-warm h4,.bg-11x-warm .hl-name{color:#fff !important}
+.bg-11x-warm .eyebrow{color:#e8dcc8 !important}
+.bg-11x-warm p,.bg-11x-warm .section-lead{color:#f0e8dc !important}
+/* карточки (team, pain, шаги, контакты) — полупрозрачные светлые */
+.bg-11x-warm .team-card,
+.bg-11x-warm .pain-cell,
+.bg-11x-warm .step,
+.bg-11x-warm .contact-cell,
+.bg-11x-warm .c-cell,
+.bg-11x-warm .accent-box{
+  background:rgba(255,255,255,.07) !important;
+  border:1px solid rgba(255,255,255,.13) !important;
+}
+.bg-11x-warm .step h4,.bg-11x-warm .step p,.bg-11x-warm .card-link{color:#f0e8dc !important}
+.bg-11x-warm .step-n,.bg-11x-warm .hl-role{color:#d8b98a !important}
+.bg-11x-warm .card-link{color:#fff !important}
+.bg-11x-warm .status.live{color:#7ed99f !important}
+.bg-11x-warm .status.soon{color:#c9b89a !important}
+.bg-11x-warm a{color:#fff}
+.bg-11x-warm .contact-cell a,.bg-11x-warm .c-cell a{color:#e8c89a !important}
+.bg-11x-warm .how-row{border-color:rgba(255,255,255,.12) !important}
+
+/* ===== Таблица сравнения на коричневом ===== */
+.bg-11x-warm .ctable{border-color:rgba(255,255,255,.16)}
+.bg-11x-warm .crow{border-bottom-color:rgba(255,255,255,.12)}
+.bg-11x-warm .crow .lab{color:#d8c9b0}
+.bg-11x-warm .crow .human{border-left-color:rgba(255,255,255,.12);color:#e0d5c2}
+.bg-11x-warm .crow .ai{
+  border-left-color:rgba(255,255,255,.12);
+  background:linear-gradient(180deg,rgba(216,185,138,.22) 0%,rgba(216,185,138,.08) 100%);
+  color:#fff;position:relative;
+}
+.bg-11x-warm .crow.head .ai{background:linear-gradient(180deg,rgba(232,200,154,.34) 0%,rgba(216,185,138,.16) 100%)}
+.bg-11x-warm .crow .ai::before{
+  content:"";position:absolute;left:0;top:0;bottom:0;width:2px;
+  background:linear-gradient(180deg,rgba(240,210,160,.7),rgba(240,210,160,0));
+}
+.bg-11x-warm .crow.head .ai::before{background:rgba(240,210,160,.8)}
+
+/* ========== ЕДИНЫЙ ФОН ВСЕЙ ГЛАВНОЙ (без переходов между блоками) ========== */
+body.page-warm-full{
+  background:linear-gradient(180deg,#7d6449 0%,#5c4a38 25%,#3a2f24 55%,#241d17 100%) !important;
+  background-attachment:fixed !important;
+}
+/* ВСЕ секции прозрачные — виден единый фон body, стыков нет */
+body.page-warm-full section,
+body.page-warm-full .strip,
+body.page-warm-full > div:not(nav):not(footer){
+  background:transparent !important;
+}
+/* перебиваем индивидуальные градиенты, что были на блоках */
+body.page-warm-full section.bg-11x-warm,
+body.page-warm-full section#pain,
+body.page-warm-full section#team{background:transparent !important}
+/* nav и footer — полупрозрачные тёмные поверх фона */
+body.page-warm-full nav{background:rgba(36,29,23,.85);backdrop-filter:blur(10px)}
+body.page-warm-full footer{background:rgba(26,21,17,.5)}
+
+/* ===== Убираем окантовку hero на страницах персон ===== */
+.profile-hero.hero-11x-warm{
+  background:transparent !important;
+  padding:60px 0 80px !important;
+  border-radius:0 !important;
+  margin-bottom:0 !important;
+}
+.profile-hero.hero-11x-warm::before{display:none !important}
+
+/* ===== NAV: прозрачный вверху → тёмный при скролле ===== */
+nav{
+  position:sticky;top:0;z-index:100;
+  background:transparent;
+  transition:background .3s ease, backdrop-filter .3s ease, border-color .3s ease;
+  border-bottom:1px solid transparent;
+}
+nav.scrolled{
+  background:rgba(26,21,17,.82);
+  backdrop-filter:blur(12px);
+  -webkit-backdrop-filter:blur(12px);
+  border-bottom:1px solid rgba(255,255,255,.08);
+}
+/* на страницах персон вверху nav прозрачный (виден коричневый фон), при скролле тёмный — правило выше уже покрывает */
+body.page-warm nav:not(.scrolled),
+body.page-warm-full nav:not(.scrolled){background:transparent;backdrop-filter:none}
