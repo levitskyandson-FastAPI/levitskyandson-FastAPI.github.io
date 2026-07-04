@@ -142,7 +142,7 @@
     fetch(CHAT_EP, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ client_id: current.clientId, message: text, session_id: sid })
+      body: JSON.stringify({ client_token: current.clientId, message: text, session_id: sid })
     })
       .then(function (r) { return r.json(); })
       .then(function (data) {
