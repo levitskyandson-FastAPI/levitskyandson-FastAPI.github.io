@@ -68,7 +68,7 @@ section{padding:28px 0}
 .team-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:8px}
 .card{border:1px solid var(--card-line);border-radius:22px;padding:0;background:var(--card);overflow:hidden;display:flex;flex-direction:column;transition:border-color .25s,transform .25s}
 .card:hover{border-color:#3A3A3A;transform:translateY(-5px)}
-.card-media{height:130px;background:linear-gradient(135deg,#141414,#1f1f1f);display:flex;align-items:center;justify-content:center;position:relative;border-bottom:1px solid var(--card-line)}
+.card-media{height:230px;background:linear-gradient(135deg,#141414,#1f1f1f);display:flex;align-items:center;justify-content:center;position:relative;border-bottom:1px solid var(--card-line);overflow:hidden}
 .card-media .big-letter{font-size:84px;font-weight:800;color:#2E2E2E}
 .play-badge{position:absolute;bottom:16px;right:16px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);backdrop-filter:blur(8px);padding:7px 14px;border-radius:100px;font-size:12px;color:#CFCFCF;display:flex;align-items:center;gap:7px}
 .card-body{padding:30px 28px 32px;display:flex;flex-direction:column;flex-grow:1}
