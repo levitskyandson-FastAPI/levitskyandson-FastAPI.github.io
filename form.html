@@ -69,6 +69,7 @@
       <!-- ВАЖНО: action подключишь к своему доставщику со старого сайта -->
       <form id="leadForm" action="https://formspree.io/f/mojyyggw" method="POST">
         <input type="hidden" name="tariff" id="tariffField" value="">
+        <input type="hidden" name="_next" value="https://www.levitskyandson.com/index.html?sent=1">
         <div class="form-row">
           <div class="field">
             <label>Ваше имя *</label>
@@ -137,33 +138,6 @@
     document.getElementById('tariffName').textContent = t;
     document.getElementById('tariffField').value = t;
   }
-})();
-
-// Отправка формы на Formspree без перезагрузки + сообщение "спасибо"
-(function(){
-  var form = document.getElementById('leadForm');
-  if(!form) return;
-  form.addEventListener('submit', function(e){
-    e.preventDefault();
-    var btn = form.querySelector('.form-submit');
-    var oldText = btn ? btn.textContent : '';
-    if(btn){ btn.disabled = true; btn.textContent = 'Отправляем…'; }
-    fetch(form.action, {
-      method: 'POST',
-      body: new FormData(form),
-      headers: { 'Accept': 'application/json' }
-    }).then(function(r){
-      if(r.ok){
-        form.innerHTML = '<div style="text-align:center;padding:40px 20px;"><div style="font-size:48px;margin-bottom:16px;">✓</div><h3 style="color:#fff;font-size:22px;margin-bottom:10px;">Заявка отправлена!</h3><p style="color:#f0e8dc;font-size:15px;line-height:1.5;">Спасибо! Мы свяжемся с вами в ближайшее время. Обычно отвечаем в течение 15 минут в рабочее время.</p></div>';
-      } else {
-        if(btn){ btn.disabled = false; btn.textContent = oldText; }
-        alert('Не удалось отправить. Попробуйте ещё раз или напишите нам в Telegram.');
-      }
-    }).catch(function(){
-      if(btn){ btn.disabled = false; btn.textContent = oldText; }
-      alert('Ошибка связи. Попробуйте ещё раз или напишите нам в Telegram.');
-    });
-  });
 })();
 </script>
 <script>(function(){var n=document.querySelector("nav");if(!n)return;function s(){if(window.scrollY>30){n.classList.add("scrolled")}else{n.classList.remove("scrolled")}}window.addEventListener("scroll",s,{passive:true});s();})();</script>
