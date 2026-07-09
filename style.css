@@ -150,12 +150,27 @@ footer{padding:40px 0 32px;border-top:1px solid var(--line)}
 .has-drop{position:relative}
 .has-drop > span{cursor:pointer;display:inline-flex;align-items:center;gap:6px}
 .mega{
-  position:fixed;left:50%;top:76px;transform:translateX(-50%) translateY(10px);
-  background:#0A0A0A;border:1px solid var(--card-line);border-radius:22px;
-  padding:18px;width:min(940px,calc(100vw - 48px));
-  display:grid;grid-template-columns:repeat(3,1fr);gap:16px;
-  opacity:0;visibility:hidden;transition:all .24s;
-  box-shadow:0 30px 80px rgba(0,0,0,.7);z-index:200;
+  position:fixed;
+  left:50%;
+  top:76px;
+  transform:translateX(-50%) translateY(10px);
+
+  width:min(940px,calc(100vw - 48px));
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:16px;
+
+  background:transparent;
+  border:none;
+  border-radius:0;
+  padding:0;
+
+  opacity:0;
+  visibility:hidden;
+  transition:all .24s;
+
+  box-shadow:none;
+  z-index:200;
 }
 .has-drop:hover .mega{opacity:1;visibility:visible;transform:translateX(-50%) translateY(0)}
 .mega-card{
