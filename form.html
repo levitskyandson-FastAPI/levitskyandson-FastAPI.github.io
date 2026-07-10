@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Оставить заявку · Levitsky & Son</title>
+<title>Начать внедрение · Levitsky & Son</title>
 <link rel="stylesheet" href="style.css">
 <!-- Yandex.Metrika counter -->
 <script type="text/javascript">
@@ -114,12 +114,12 @@
   <section style="padding:50px 0 70px">
 
 <h1 class="section-title">
-Начало внедрения
+Начать работу с цифровым сотрудником
 </h1>
 
 <p class="section-lead" style="max-width:760px;">
 Вы выбрали цифрового сотрудника Levitsky & Son.
-Заполните информацию о вашей компании — мы подготовим внедрение, согласуем сценарии работы и назначим дату запуска.
+После получения заявки мы свяжемся с вами, изучим ваши бизнес-процессы, настроим цифрового сотрудника под вашу компанию и подготовим его к работе. Средний срок внедрения — от 3 рабочих дней.
 </p>
 
     <div class="form-wrap">
@@ -129,24 +129,26 @@
           <div>
 
 <div class="tp-label">
-Цифровой сотрудник
+Ваш цифровой сотрудник
 </div>
 
 <div class="tp-val" id="tariffName">
-—
+Анна
 </div>
 
-<div style="margin-top:20px;font-size:14px;color:#8b8b8b;">
-Пакет
+<div class="tp-label" style="margin-top:18px;">
+Выбранный пакет
 </div>
 
-<div id="packageName" style="font-size:24px;font-weight:700;margin-top:6px;">
-—
+<div id="packageName" class="tp-val">
+Команда
 </div>
 
 </div>
 
-<a href="tariffs.html"
+<a href="anna.html#pricing">
+Изменить пакет
+</a>
 style="font-size:14px;color:var(--smoke);text-decoration:underline">
 Изменить пакет
 </a>
@@ -171,26 +173,56 @@ style="font-size:14px;color:var(--smoke);text-decoration:underline">
           <input type="email" name="email" placeholder="email@company.ru" required>
         </div>
         <div class="field">
-          <label>Ниша бизнеса</label>
-          <select name="niche">
-            <option value="">Выберите…</option>
-            <option>Онлайн-школа</option>
-            <option>Стоматология / клиника</option>
-            <option>Автошкола</option>
-            <option>Услуги / сервис</option>
-            <option>Товары / e-commerce</option>
-            <option>Другое</option>
-          </select>
-        </div>
+  <label>Название компании *</label>
+  <input
+    type="text"
+    name="company"
+    placeholder="Например: Академия XYZ"
+    required>
+</div>
+          <div class="field">
+  <label>Чем занимается ваша компания?</label>
+  <input
+    type="text"
+    name="business"
+    placeholder="Например: онлайн-образование, стоматология, производство">
+</div>
         <div class="field">
-          <label>Сообщение *</label>
-          <textarea name="message" placeholder="Расскажите о вашем бизнесе и задаче…" required></textarea>
-        </div>
+  <label>Что вы хотите поручить цифровому сотруднику? *</label>
+  <textarea
+    name="message"
+    placeholder="Например:
+
+• Отвечать на новые заявки
+
+• Возвращать неоплаченные заказы
+
+• Искать новых клиентов
+
+• Консультировать клиентов
+
+• Записывать на встречу
+
+• Опишите задачи, которые вы хотите передать цифровому сотруднику.
+    required></textarea>
+</div>
+      <div class="summary-box">
+    <h3>Что будет дальше</h3>
+
+    <ul>
+        <li>Изучим ваши бизнес-процессы</li>
+        <li>Настроим цифрового сотрудника под ваши задачи</li>
+        <li>Подключим необходимые интеграции</li>
+        <li>Согласуем дату запуска</li>
+    </ul>
+</div>
         <label class="form-consent">
           <input type="checkbox" required>
           <span>Я принимаю условия <a href="offer.html">публичной оферты</a> и даю согласие на обработку <a href="privacy.html">персональных данных</a> в соответствии с 152-ФЗ.</span>
         </label>
-        <button type="submit" class="form-submit">Отправить заявку</button>
+        <button type="submit" class="form-submit">
+  Нанять в команду
+</button>
       </form>
     </div>
   </section>
