@@ -123,41 +123,15 @@
 </p>
 
     <div class="form-wrap">
-      <!-- Выбранный тариф (подставляется из ссылки ?tariff=) -->
+      <!-- Выбранный сотрудник (подставляется из ссылки ?tariff=) -->
       <div class="tariff-pick" id="tariffPick" style="display:none">
         <div>
-          <div>
-
-<div class="tp-label">
-Ваш цифровой сотрудник
-</div>
-
-<div class="tp-val" id="tariffName">
-Анна
-</div>
-
-<div class="tariff-pick" id="tariffPick" style="display:none">
-    <div>
-        <div class="tp-label">Ваш цифровой сотрудник</div>
-
-        <div class="tp-val" id="tariffName">Анна</div>
-
-        <div class="tp-label" style="margin-top:18px;">
-            Выбранный пакет
+          <div class="tp-label">Ваш цифровой сотрудник</div>
+          <div class="tp-val" id="tariffName">Анна</div>
         </div>
+        <a href="index.html#team" style="font-size:14px;color:var(--smoke);text-decoration:underline">Изменить</a>
+      </div>
 
-        <div id="packageName" class="tp-val">
-            Команда
-        </div>
-    </div>
-
-    <a href="anna.html#pricing"
-       style="font-size:14px;color:var(--smoke);text-decoration:underline">
-        Изменить пакет
-    </a>
-</div>
-
-      <!-- ВАЖНО: action подключишь к своему доставщику со старого сайта -->
       <form id="leadForm" action="https://formspree.io/f/mojyyggw" method="POST">
         <input type="hidden" name="tariff" id="tariffField" value="">
         <input type="hidden" name="_next" value="https://www.levitskyandson.com/index.html?sent=1">
@@ -176,57 +150,33 @@
           <input type="email" name="email" placeholder="email@company.ru" required>
         </div>
         <div class="field">
-  <label>Название компании *</label>
-  <input
-    type="text"
-    name="company"
-    placeholder="Например: Академия XYZ"
-    required>
-</div>
-          <div class="field">
-  <label>Чем занимается ваша компания?</label>
-  <input
-    type="text"
-    name="business"
-    placeholder="Например: онлайн-образование, стоматология, производство">
-</div>
+          <label>Название компании *</label>
+          <input type="text" name="company" placeholder="Например: Академия XYZ" required>
+        </div>
         <div class="field">
-  <label>Что вы хотите поручить цифровому сотруднику? *</label>
-  <textarea
-    name="message"
-    placeholder="Например:
-
-• Отвечать на новые заявки
-
-• Возвращать неоплаченные заказы
-
-• Искать новых клиентов
-
-• Консультировать клиентов
-
-• Записывать на встречу
-
-Опишите задачи, которые вы хотите передать цифровому сотруднику."
-    required></textarea>
-</div>
-      <div class="summary-box">
-    <h3>Что будет дальше</h3>
-
-    <ul>
-        <li>Изучим ваши бизнес-процессы</li>
-        <li>Настроим цифрового сотрудника под ваши задачи</li>
-        <li>Подключим необходимые интеграции</li>
-        <li>Согласуем дату запуска</li>
-    </ul>
-</div>
+          <label>Чем занимается ваша компания?</label>
+          <input type="text" name="business" placeholder="Например: онлайн-образование, стоматология, производство">
+        </div>
+        <div class="field">
+          <label>Что вы хотите поручить цифровому сотруднику? *</label>
+          <textarea name="message" placeholder="Опишите задачи, которые хотите передать цифровому сотруднику: отвечать на заявки, возвращать неоплаченные заказы, искать клиентов, консультировать, записывать на встречу." required></textarea>
+        </div>
+        <div class="summary-box">
+          <h3>Что будет дальше</h3>
+          <ul>
+            <li>Изучим ваши бизнес-процессы</li>
+            <li>Настроим цифрового сотрудника под ваши задачи</li>
+            <li>Подключим необходимые интеграции</li>
+            <li>Согласуем дату запуска</li>
+          </ul>
+        </div>
         <label class="form-consent">
           <input type="checkbox" required>
           <span>Я принимаю условия <a href="offer.html">публичной оферты</a> и даю согласие на обработку <a href="privacy.html">персональных данных</a> в соответствии с 152-ФЗ.</span>
         </label>
-        <button type="submit" class="form-submit">
-  Нанять в команду
-</button>
+        <button type="submit" class="form-submit">Нанять в команду</button>
       </form>
+    </div>
     </div>
   </section>
 </div>
