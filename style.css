@@ -577,3 +577,9 @@ body.page-warm-full nav:not(.scrolled){background:transparent;backdrop-filter:no
     line-height:1.9;
     color:#bdbdbd;
 }
+/* тарифы: 2 карты — центрируем, не растягиваем на 3 колонки */
+.tariff-grid{grid-template-columns:repeat(2,1fr);max-width:820px}
+@media(max-width:640px){.tariff-grid{grid-template-columns:1fr;max-width:460px}}
+
+/* форма — по центру */
+.form-wrap{margin-left:auto;margin-right:auto}
