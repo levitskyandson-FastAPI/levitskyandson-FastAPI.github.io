@@ -616,3 +616,10 @@ body.page-warm-full nav:not(.scrolled){background:transparent;backdrop-filter:no
   .burger{display:flex}
   .nav-cta{display:none}
 }
+/* меню всегда с плотным тёмным фоном, поверх любых body-фонов */
+body.page-warm .mobile-menu,
+body.page-warm-full .mobile-menu,
+.mobile-menu{
+  background:#0d0d0d !important;
+  backdrop-filter:none !important;
+}
