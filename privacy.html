@@ -108,9 +108,26 @@
       <a href="index.html#contacts">Контакты</a>
     </div>
     <a href="index.html#team" class="nav-cta">Познакомиться с командой</a>
+      <button class="burger" id="burger" aria-label="Меню">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </nav>
-
+<div class="mobile-overlay" id="mobileOverlay"></div>
+<nav class="mobile-menu" id="mobileMenu">
+  <a href="index.html">Главная</a>
+  <div class="mm-sub">Продукты</div>
+  <a href="ivan.html">Иван — AI SDR</a>
+  <a href="anna.html">Анна — Менеджер продаж</a>
+  <a href="denis.html">Денис — Агент дожима</a>
+  <a href="galina.html">Галина — Администратор</a>
+  <div class="mm-sub">Ещё</div>
+  <a href="index.html#pain">Сценарии использования</a>
+  <a href="index.html#compare">Найм ИИ vs зарплата менеджера</a>
+  <a href="https://dzen.ru/levitskyandson" target="_blank" rel="noopener">Блог</a>
+  <a href="index.html#contacts">Контакты</a>
+  <a href="index.html#team" class="mm-cta">Познакомиться с командой</a>
+</nav>
 <div class="wrap">
   <div class="legal-hero">
     <h1>Политика конфиденциальности</h1>
@@ -210,6 +227,26 @@
     <div class="foot-copy">© 2026 Levitsky & Son AI Solutions · ИП Левицкая Анна Юрьевна</div>
   </div>
 </footer>
-<script>(function(){var n=document.querySelector("nav");if(!n)return;function s(){if(window.scrollY>30){n.classList.add("scrolled")}else{n.classList.remove("scrolled")}}window.addEventListener("scroll",s,{passive:true});s();})();</script>
+<script>
+(function(){
+  var n=document.querySelector("nav");
+  function s(){if(window.scrollY>30){n.classList.add("scrolled")}else{n.classList.remove("scrolled")}}
+  window.addEventListener("scroll",s,{passive:true});s();
+  var burger=document.getElementById("burger"),
+      menu=document.getElementById("mobileMenu"),
+      overlay=document.getElementById("mobileOverlay");
+  function toggle(open){
+    burger.classList.toggle("open",open);
+    menu.classList.toggle("open",open);
+    overlay.classList.toggle("open",open);
+    document.body.style.overflow=open?"hidden":"";
+  }
+  if(burger){
+    burger.addEventListener("click",function(){toggle(!menu.classList.contains("open"))});
+    overlay.addEventListener("click",function(){toggle(false)});
+    menu.querySelectorAll("a").forEach(function(a){a.addEventListener("click",function(){toggle(false)})});
+  }
+})();
+</script>
 </body>
 </html>
