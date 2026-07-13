@@ -75,7 +75,7 @@
         '<img class="aa-ava-sm" src="' + AVATAR + '" alt="Анна">' +
         '<div class="aa-hinfo">' +
           '<div class="aa-name">Анна</div>' +
-          '<div class="aa-role">ИИ-сотрудник · Levitsky &amp; Son</div>' +
+          '<div class="aa-role">Менеджер продаж · Levitsky &amp; Son</div>' +
           '<div class="aa-status"><span class="aa-dot"></span>на связи</div>' +
         '</div>' +
         '<button class="aa-close" aria-label="Закрыть">&times;</button>' +
