@@ -1,27 +1,25 @@
 /* ============================================================
    ask-anna.js — плавающий виджет "Спросить Анну"
    ИИ-ассистент агентства Levitsky & Son
-   Подключение (одна строка перед </body> на любой странице):
+   Подключение (одна строка перед </body>):
      <script src="ask-anna.js" defer></script>
-   Требует: файл anna.jpg в корне сайта.
-   НЕ конфликтует с interview-widget.js (разные namespace).
+   Требует: anna.jpg в корне сайта.
+   История диалога подтягивается через POST /web/history.
    ============================================================ */
 (function () {
   "use strict";
 
-  // ---------- Конфиг ----------
   var API_BASE     = "https://api.levitskyandson.com";
   var CHAT_EP      = API_BASE + "/web/chat";
-  var CLIENT_TOKEN = "web_3f662b802375a6e11ddec134aaed6ecf"; // клиент "Levitsky & Son AI Solutions"
+  var HIST_EP      = API_BASE + "/web/history";
+  var CLIENT_TOKEN = "web_3f662b802375a6e11ddec134aaed6ecf";
   var AVATAR       = "anna.jpg";
   var SESS_KEY     = "levitsky_anna_session_id";
   var GREETING     = "Здравствуйте! Меня зовут Анна, я ИИ-сотрудник Levitsky & Son. Расскажу про ИИ-сотрудников для вашего бизнеса и помогу подобрать решение. С чего начнём?";
 
-  // не грузиться дважды
   if (window.__askAnnaLoaded) return;
   window.__askAnnaLoaded = true;
 
-  // ---------- session_id (UUID) ----------
   function uuid() {
     if (window.crypto && crypto.randomUUID) return crypto.randomUUID();
     return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, function (c) {
@@ -32,7 +30,6 @@
   var sessionId = localStorage.getItem(SESS_KEY);
   if (!sessionId) { sessionId = uuid(); localStorage.setItem(SESS_KEY, sessionId); }
 
-  // ---------- Стили ----------
   var css = document.createElement("style");
   css.textContent = [
     "#aa-w{position:fixed;right:24px;bottom:24px;z-index:99990;font-family:-apple-system,'Inter',system-ui,sans-serif}",
@@ -66,7 +63,6 @@
   ].join("");
   document.head.appendChild(css);
 
-  // ---------- Разметка ----------
   var w = document.createElement("div");
   w.id = "aa-w";
   w.innerHTML =
@@ -99,7 +95,8 @@
   var fab   = w.querySelector("#aa-fab");
   var closeBtn = w.querySelector(".aa-close");
 
-  var greeted = false, busy = false;
+  var busy = false;
+  var historyLoaded = false; // историю с сервера тянем один раз за загрузку страницы
 
   function addMsg(text, who) {
     var d = document.createElement("div");
@@ -117,13 +114,47 @@
       body.appendChild(t); body.scrollTop = body.scrollHeight;
     } else if (!on && t) { t.remove(); }
   }
-  function toggle() {
-    panel.classList.toggle("open");
-    if (panel.classList.contains("open")) {
-      if (!greeted) { addMsg(GREETING, "bot"); greeted = true; }
-      setTimeout(function () { input.focus(); }, 200);
+
+  // Загрузка истории с сервера (POST /web/history → {messages:[{role,content}]})
+  function loadHistory() {
+    return fetch(HIST_EP, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ client_token: CLIENT_TOKEN, session_id: sessionId })
+    })
+      .then(function (r) { return r.json(); })
+      .then(function (data) {
+        var msgs = (data && data.messages) || [];
+        if (msgs.length) {
+          msgs.forEach(function (m) {
+            if (m.role === "user") addMsg(m.content, "user");
+            else if (m.role === "assistant") addMsg(m.content, "bot");
+          });
+        } else {
+          addMsg(GREETING, "bot"); // пустая история — здороваемся
+        }
+      })
+      .catch(function () {
+        if (!body.children.length) addMsg(GREETING, "bot"); // сеть упала — хотя бы приветствие
+      });
+  }
+
+  function openPanel() {
+    panel.classList.add("open");
+    if (!historyLoaded) {
+      historyLoaded = true;
+      loadHistory().then(function () {
+        setTimeout(function () { input.focus(); }, 150);
+      });
+    } else {
+      setTimeout(function () { input.focus(); }, 150);
     }
   }
+  function toggle() {
+    if (panel.classList.contains("open")) panel.classList.remove("open");
+    else openPanel();
+  }
+
   function send() {
     var text = input.value.trim();
     if (!text || busy) return;
