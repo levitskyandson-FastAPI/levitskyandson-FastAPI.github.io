@@ -100,6 +100,14 @@
   window.addEventListener("scroll", onScroll, { passive: true });
   onScroll();
 
+  // Прячем виджет за мобильным меню
+  var mobileMenu = document.getElementById('mobileMenu');
+  if (mobileMenu) {
+    new MutationObserver(function() {
+      w.style.zIndex = mobileMenu.classList.contains('open') ? '9000' : '99990';
+    }).observe(mobileMenu, { attributes: true, attributeFilter: ['class'] });
+  }
+
   function addMsg(text, who) {
     var d = document.createElement("div");
     d.className = "aa-msg " + who;
