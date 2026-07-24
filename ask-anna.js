@@ -1,14 +1,13 @@
 /* ============================================================
    ask-anna.js — плавающий виджет "Спросить Анну"
-   ИИ-ассистент агентства Levitsky & Son
-   ПОЗИЦИЯ: верхний правый угол, панель раскрывается вниз.
-   Эффект: прозрачный фон вверху страницы, тёмный при скролле.
+   Levitsky & Son · верхний правый угол · история сессии
    ============================================================ */
 (function () {
   "use strict";
 
   var API_BASE     = "https://api.levitskyandson.com";
   var CHAT_EP      = API_BASE + "/web/chat";
+  var HISTORY_EP   = API_BASE + "/web/history";
   var CLIENT_TOKEN = "web_3f662b802375a6e11ddec134aaed6ecf";
   var AVATAR       = "anna.jpg";
   var SESS_KEY     = "levitsky_anna_session_id";
@@ -101,8 +100,6 @@
   window.addEventListener("scroll", onScroll, { passive: true });
   onScroll();
 
-  var greeted = false, busy = false;
-
   function addMsg(text, who) {
     var d = document.createElement("div");
     d.className = "aa-msg " + who;
@@ -119,19 +116,49 @@
       body.appendChild(t); body.scrollTop = body.scrollHeight;
     } else if (!on && t) { t.remove(); }
   }
+
+  // Загрузка истории
+  function loadHistory() {
+    fetch(HISTORY_EP, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ client_token: CLIENT_TOKEN, session_id: sessionId })
+    })
+      .then(function (r) { return r.ok ? r.json() : null; })
+      .then(function (data) {
+        var msgs = data && (data.messages || data.conversation);
+        if (msgs && msgs.length) {
+          msgs.forEach(function (m) {
+            var who = (m.role === "user" || m.is_user) ? "user" : "bot";
+            var txt = m.content || m.text || m.message || "";
+            if (txt) addMsg(txt, who);
+          });
+        } else {
+          addMsg(GREETING, "bot");
+        }
+      })
+      .catch(function () { addMsg(GREETING, "bot"); });
+  }
+
+  var historyLoaded = false;
+
   function toggle() {
     panel.classList.toggle("open");
     if (panel.classList.contains("open")) {
-      if (!greeted) { addMsg(GREETING, "bot"); greeted = true; }
+      if (!historyLoaded) {
+        historyLoaded = true;
+        loadHistory();
+      }
       setTimeout(function () { input.focus(); }, 200);
     }
   }
+
   function send() {
     var text = input.value.trim();
-    if (!text || busy) return;
+    if (!text || sendBtn.disabled) return;
     input.value = "";
     addMsg(text, "user");
-    busy = true; sendBtn.disabled = true; typing(true);
+    sendBtn.disabled = true; typing(true);
     fetch(CHAT_EP, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -141,10 +168,10 @@
       .then(function (data) {
         typing(false);
         if (data && data.reply) addMsg(data.reply, "bot");
-        else { addMsg("Извините, техническая заминка. Попробуйте ещё раз.", "bot"); }
+        else addMsg("Извините, техническая заминка. Попробуйте ещё раз.", "bot");
       })
       .catch(function () { typing(false); addMsg("Ошибка соединения. Попробуйте чуть позже.", "bot"); })
-      .finally(function () { busy = false; sendBtn.disabled = false; input.focus(); });
+      .finally(function () { sendBtn.disabled = false; input.focus(); });
   }
 
   fab.addEventListener("click", toggle);
