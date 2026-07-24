@@ -1,31 +1,23 @@
 /* ============================================================
    ask-anna.js — плавающий виджет "Спросить Анну"
    ИИ-ассистент агентства Levitsky & Son
-   Подключение (одна строка перед </body> на любой странице):
-     <script src="ask-anna.js" defer></script>
-   Требует: файл anna.jpg в корне сайта.
-   НЕ конфликтует с interview-widget.js (разные namespace).
    ПОЗИЦИЯ: верхний правый угол, панель раскрывается вниз.
+   Эффект: прозрачный фон вверху страницы, тёмный при скролле.
    ============================================================ */
 (function () {
   "use strict";
 
-  // ---------- Конфиг ----------
   var API_BASE     = "https://api.levitskyandson.com";
   var CHAT_EP      = API_BASE + "/web/chat";
-  var CLIENT_TOKEN = "web_3f662b802375a6e11ddec134aaed6ecf"; // клиент "Levitsky & Son AI Solutions"
+  var CLIENT_TOKEN = "web_3f662b802375a6e11ddec134aaed6ecf";
   var AVATAR       = "anna.jpg";
   var SESS_KEY     = "levitsky_anna_session_id";
   var GREETING     = "Здравствуйте! Меня зовут Анна, я ИИ-сотрудник Levitsky & Son. Расскажу про ИИ-сотрудников для вашего бизнеса и помогу подобрать решение. С чего начнём?";
-
-  // Отступ сверху. Если на сайте фиксированная шапка — увеличить до её высоты + 16px.
   var TOP_OFFSET   = "80px";
 
-  // не грузиться дважды
   if (window.__askAnnaLoaded) return;
   window.__askAnnaLoaded = true;
 
-  // ---------- session_id (UUID) ----------
   function uuid() {
     if (window.crypto && crypto.randomUUID) return crypto.randomUUID();
     return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, function (c) {
@@ -36,12 +28,12 @@
   var sessionId = localStorage.getItem(SESS_KEY);
   if (!sessionId) { sessionId = uuid(); localStorage.setItem(SESS_KEY, sessionId); }
 
-  // ---------- Стили ----------
   var css = document.createElement("style");
   css.textContent = [
     "#aa-w{position:fixed;right:24px;top:" + TOP_OFFSET + ";z-index:99990;font-family:-apple-system,'Inter',system-ui,sans-serif}",
-    "#aa-fab{display:flex;align-items:center;gap:12px;background:#1c1712;color:#fff;border:none;border-radius:100px;padding:10px 22px 10px 10px;cursor:pointer;box-shadow:0 8px 30px rgba(0,0,0,.28);transition:transform .2s,box-shadow .2s}",
-    "#aa-fab:hover{transform:translateY(-2px);box-shadow:0 12px 40px rgba(0,0,0,.38)}",
+    "#aa-fab{display:flex;align-items:center;gap:12px;background:rgba(28,23,18,0);color:#fff;border:1px solid rgba(255,255,255,.3);border-radius:100px;padding:10px 22px 10px 10px;cursor:pointer;box-shadow:none;transition:background .35s,border-color .35s,box-shadow .35s,transform .2s}",
+    "#aa-fab:hover{transform:translateY(-2px)}",
+    "#aa-fab.scrolled{background:#1c1712;border-color:transparent;box-shadow:0 8px 30px rgba(0,0,0,.28)}",
     ".aa-ava{width:40px;height:40px;border-radius:50%;object-fit:cover;flex:none;background:#3a2f24}",
     ".aa-fab-txt{font-size:16px;font-weight:600;white-space:nowrap}",
     "#aa-panel{position:absolute;right:0;top:72px;width:390px;max-width:calc(100vw - 32px);height:580px;max-height:calc(100vh - 120px);background:#1c1712;border:1px solid rgba(255,255,255,.12);border-radius:20px;box-shadow:0 24px 60px rgba(0,0,0,.5);display:flex;flex-direction:column;overflow:hidden;transform:translateY(-20px) scale(.98);opacity:0;pointer-events:none;transition:transform .28s cubic-bezier(.16,1,.3,1),opacity .28s;transform-origin:top right}",
@@ -70,7 +62,6 @@
   ].join("");
   document.head.appendChild(css);
 
-  // ---------- Разметка ----------
   var w = document.createElement("div");
   w.id = "aa-w";
   w.innerHTML =
@@ -102,6 +93,13 @@
   var sendBtn = w.querySelector("#aa-send");
   var fab   = w.querySelector("#aa-fab");
   var closeBtn = w.querySelector(".aa-close");
+
+  // Эффект скролла
+  function onScroll() {
+    fab.classList.toggle("scrolled", window.scrollY > 30);
+  }
+  window.addEventListener("scroll", onScroll, { passive: true });
+  onScroll();
 
   var greeted = false, busy = false;
 
@@ -143,9 +141,9 @@
       .then(function (data) {
         typing(false);
         if (data && data.reply) addMsg(data.reply, "bot");
-        else { addMsg("Извините, техническая заминка. Попробуйте ещё раз.", "bot"); if (data && data.error) console.warn("ask-anna:", data.error); }
+        else { addMsg("Извините, техническая заминка. Попробуйте ещё раз.", "bot"); }
       })
-      .catch(function (e) { typing(false); addMsg("Ошибка соединения. Попробуйте чуть позже.", "bot"); console.error("ask-anna:", e); })
+      .catch(function () { typing(false); addMsg("Ошибка соединения. Попробуйте чуть позже.", "bot"); })
       .finally(function () { busy = false; sendBtn.disabled = false; input.focus(); });
   }
 
