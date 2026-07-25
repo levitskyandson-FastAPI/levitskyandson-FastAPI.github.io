@@ -135,7 +135,7 @@ footer{padding:40px 0 32px;border-top:1px solid var(--line)}
 .profile-info h1{font-size:clamp(48px,6vw,84px);font-weight:800;letter-spacing:-.04em;line-height:.95;margin-top:14px}
 .profile-info .p-tag{font-size:21px;color:#CFCFCF;margin-top:24px;line-height:1.5;max-width:46ch}
 .profile-info .p-status{display:inline-flex;align-items:center;gap:9px;font-size:14px;font-weight:600;margin-top:28px}
-.profile-info .p-actions{margin-top:36px;display:flex;gap:14px;flex-wrap:wrap}
+.profile-info .p-actions{margin-top:36px;display:flex;gap:14px;flex-wrap:nowrap}
 @media(max-width:900px){.profile-hero{grid-template-columns:1fr;gap:40px}.profile-video{max-width:420px}}
 
 .skills{padding:100px 0;border-top:1px solid var(--line)}
@@ -623,3 +623,6 @@ body.page-warm-full .mobile-menu,
   background:#0d0d0d !important;
   backdrop-filter:none !important;
 }
+.profile-info .p-actions{margin-top:36px;display:flex;gap:14px;flex-wrap:nowrap}
+.profile-info .p-actions .btn-primary,
+.profile-info .p-actions .btn-ghost{flex:1;text-align:center;padding:21px 20px}
