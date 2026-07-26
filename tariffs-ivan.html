@@ -274,6 +274,28 @@
         <label>ОГРН / ОГРНИП *</label>
         <input type="text" id="f_ogrn" placeholder="1027700000000" required>
       </div>
+      <div class="field">
+        <label>Юридический адрес *</label>
+        <input type="text" id="f_address" placeholder="г. Москва, ул. ..., д. ..." required>
+      </div>
+      <div class="field">
+        <label>Название банка *</label>
+        <input type="text" id="f_bank" placeholder="ПАО Сбербанк" required>
+      </div>
+      <div class="field">
+        <label>Расчётный счёт *</label>
+        <input type="text" id="f_rs" placeholder="40702810..." required>
+      </div>
+      <div class="field form-row">
+        <div class="field" style="margin-bottom:0">
+          <label>Корр. счёт *</label>
+          <input type="text" id="f_ks" placeholder="30101810..." required>
+        </div>
+        <div class="field" style="margin-bottom:0">
+          <label>БИК *</label>
+          <input type="text" id="f_bik" placeholder="044525..." required>
+        </div>
+      </div>
 
       <div class="notify-label">Куда прислать счёт *</div>
       <div class="notify-options">
@@ -379,6 +401,11 @@ function submitInvoice() {
   var company = document.getElementById('f_company').value.trim();
   var inn = document.getElementById('f_inn').value.trim();
   var ogrn = document.getElementById('f_ogrn').value.trim();
+  var address = document.getElementById('f_address').value.trim();
+  var bank = document.getElementById('f_bank').value.trim();
+  var rs = document.getElementById('f_rs').value.trim();
+  var ks = document.getElementById('f_ks').value.trim();
+  var bik = document.getElementById('f_bik').value.trim();
   var consent = document.getElementById('f_consent').checked;
   var tg = document.getElementById('n_telegram').checked;
   var mx = document.getElementById('n_max').checked;
@@ -392,6 +419,11 @@ function submitInvoice() {
   if(!company){ err.textContent='Укажите название компании'; err.style.display='block'; return; }
   if(!inn){ err.textContent='Укажите ИНН'; err.style.display='block'; return; }
   if(!ogrn){ err.textContent='Укажите ОГРН / ОГРНИП'; err.style.display='block'; return; }
+  if(!address){ err.textContent='Укажите юридический адрес'; err.style.display='block'; return; }
+  if(!bank){ err.textContent='Укажите название банка'; err.style.display='block'; return; }
+  if(!rs){ err.textContent='Укажите расчётный счёт'; err.style.display='block'; return; }
+  if(!ks){ err.textContent='Укажите корр. счёт'; err.style.display='block'; return; }
+  if(!bik){ err.textContent='Укажите БИК'; err.style.display='block'; return; }
   if(!tg && !mx && !em){ err.textContent='Выберите куда прислать счёт'; err.style.display='block'; return; }
   if(!consent){ err.textContent='Примите условия оферты'; err.style.display='block'; return; }
 
@@ -415,6 +447,11 @@ function submitInvoice() {
   data.append('ИНН', inn);
   data.append('КПП', document.getElementById('f_kpp').value.trim() || '—');
   data.append('ОГРН/ОГРНИП', ogrn);
+  data.append('Юр. адрес', address);
+  data.append('Банк', bank);
+  data.append('Р/с', rs);
+  data.append('К/с', ks);
+  data.append('БИК', bik);
   data.append('Куда прислать счёт', notify.join(', '));
 
   fetch('https://formspree.io/f/mojyyggw', {
