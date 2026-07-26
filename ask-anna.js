@@ -104,7 +104,7 @@
   var mobileMenu = document.getElementById('mobileMenu');
   if (mobileMenu) {
     new MutationObserver(function() {
-      w.style.zIndex = mobileMenu.classList.contains('open') ? '9000' : '99990';
+      w.style.zIndex = mobileMenu.classList.contains('open') ? '100' : '99990';
     }).observe(mobileMenu, { attributes: true, attributeFilter: ['class'] });
   }
 
