@@ -268,7 +268,7 @@ footer{padding:40px 0 32px;border-top:1px solid var(--line)}
 .tcard .t-btn{text-align:center;padding:16px;border-radius:100px;font-size:16px;font-weight:600;transition:all .2s}
 .tcard .t-btn.solid{background:var(--paper);color:var(--ink)}
 .tcard .t-btn.solid:hover{opacity:.85}
-.tcard .t-btn.line{border:1.5px solid #3A3A3A;color:var(--paper)}
+.tcard .t-btn.line{border:1.5px solid #3A3A3A;color:var(--ink)}
 .tcard .t-btn.line:hover{border-color:var(--paper)}
 @media(max-width:1100px){.tariff-grid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:640px){.tariff-grid{grid-template-columns:1fr}}
