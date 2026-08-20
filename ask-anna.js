@@ -57,7 +57,7 @@
     ".aa-input:focus{border-color:#8a6f52}",
     ".aa-send{background:#8a6f52;color:#fff;border:none;border-radius:50%;width:42px;height:42px;cursor:pointer;font-size:16px;flex:none}",
     ".aa-send:disabled{opacity:.4;cursor:default}",
-    "@media(max-width:600px){#aa-w{right:16px;top:16px}#aa-panel{width:calc(100vw - 32px);top:66px;height:calc(100vh - 100px)}.aa-fab-txt{font-size:15px}}"
+    "@media(max-width:480px){#aa-w{display:none!important}}"
   ].join("");
   document.head.appendChild(css);
 
