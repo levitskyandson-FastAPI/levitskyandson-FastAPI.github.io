@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Онлайн-школа — Денис Левицкий</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --sand:    #c9b99a;
+    --espresso:#3a2d20;
+    --gold:    #c9a84c;
+    --cream:   #f5efe6;
+    --warm-bg: #1a1208;
+    --mid:     #2e2015;
+    --text:    #e8ddd0;
+    --muted:   #8a7a65;
+    --radius:  2px;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--warm-bg);
+    color: var(--text);
+    font-family: 'Inter', sans-serif;
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── NAV (matches main site aesthetic) ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 20px 48px;
+    background: rgba(26,18,8,.92);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid rgba(201,168,76,.15);
+  }
+  .nav-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px; font-weight: 400; letter-spacing: .08em;
+    color: var(--sand); text-decoration: none;
+  }
+  .nav-logo span { color: var(--gold); }
+  .nav-back {
+    font-size: 13px; color: var(--muted); text-decoration: none;
+    letter-spacing: .06em;
+    transition: color .2s;
+  }
+  .nav-back:hover { color: var(--sand); }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 120px 48px 80px;
+    position: relative; overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 60% 50% at 80% 40%, rgba(201,168,76,.07) 0%, transparent 70%),
+      radial-gradient(ellipse 40% 60% at 10% 70%, rgba(201,185,154,.05) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .hero-eyebrow {
+    font-size: 12px; letter-spacing: .18em; color: var(--gold);
+    margin-bottom: 32px; font-weight: 400;
+  }
+  .hero-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(52px, 8vw, 96px);
+    font-weight: 300; line-height: 1.05;
+    color: var(--cream);
+    max-width: 820px;
+    margin-bottom: 8px;
+  }
+  .hero-title em {
+    font-style: italic; color: var(--gold);
+  }
+  .hero-subtitle {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(20px, 2.5vw, 28px);
+    font-weight: 300; font-style: italic;
+    color: var(--sand); opacity: .8;
+    margin-bottom: 48px;
+    max-width: 600px;
+  }
+  .hero-body {
+    font-size: 17px; line-height: 1.75;
+    color: var(--text); opacity: .75;
+    max-width: 560px; margin-bottom: 56px;
+  }
+  .hero-cta {
+    display: inline-flex; align-items: center; gap: 12px;
+    background: var(--gold);
+    color: var(--espresso);
+    font-size: 15px; font-weight: 500; letter-spacing: .04em;
+    padding: 16px 36px; border-radius: var(--radius);
+    text-decoration: none;
+    transition: background .2s, transform .15s;
+  }
+  .hero-cta:hover { background: #dfc06a; transform: translateY(-1px); }
+  .hero-cta .arrow { font-size: 18px; }
+
+  /* ── SPARK BLOCK ── */
+  .spark-block {
+    padding: 100px 48px;
+    border-top: 1px solid rgba(201,168,76,.1);
+  }
+  .spark-inner {
+    max-width: 900px; margin: 0 auto;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;
+  }
+  .spark-quote {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(28px, 3.5vw, 44px);
+    font-weight: 300; line-height: 1.3;
+    color: var(--cream);
+  }
+  .spark-quote strong {
+    font-weight: 600; color: var(--gold); font-style: italic;
+  }
+  .spark-text { color: var(--text); opacity: .7; font-size: 16px; line-height: 1.8; }
+  .spark-text p + p { margin-top: 20px; }
+
+  /* ── APP BLOCK ── */
+  .app-block {
+    padding: 100px 48px;
+    background: var(--mid);
+    border-top: 1px solid rgba(201,168,76,.1);
+    border-bottom: 1px solid rgba(201,168,76,.1);
+  }
+  .section-label {
+    font-size: 11px; letter-spacing: .2em; color: var(--gold);
+    margin-bottom: 16px; font-weight: 400;
+  }
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(34px, 4vw, 54px);
+    font-weight: 300; color: var(--cream); line-height: 1.15;
+    margin-bottom: 20px;
+  }
+  .section-title em { font-style: italic; color: var(--gold); }
+  .section-intro {
+    font-size: 17px; color: var(--text); opacity: .7;
+    max-width: 540px; line-height: 1.75; margin-bottom: 64px;
+  }
+
+  .app-flow {
+    display: flex; flex-direction: column; gap: 0;
+    max-width: 680px;
+  }
+  .flow-step {
+    display: grid; grid-template-columns: 56px 1fr;
+    gap: 24px; align-items: start;
+    padding: 32px 0;
+    border-bottom: 1px solid rgba(201,168,76,.08);
+  }
+  .flow-step:last-child { border-bottom: none; }
+  .flow-num {
+    width: 44px; height: 44px;
+    border: 1px solid rgba(201,168,76,.3);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px; color: var(--gold); font-weight: 300;
+    flex-shrink: 0; margin-top: 2px;
+  }
+  .flow-content h3 {
+    font-size: 18px; font-weight: 400; color: var(--cream);
+    margin-bottom: 8px;
+  }
+  .flow-content p { font-size: 15px; color: var(--text); opacity: .65; line-height: 1.7; }
+  .flow-badge {
+    display: inline-block; margin-top: 10px;
+    font-size: 11px; letter-spacing: .1em;
+    padding: 4px 10px; border-radius: 20px;
+    border: 1px solid rgba(201,168,76,.4);
+    color: var(--gold);
+  }
+
+  .app-download { margin-top: 56px; display: flex; gap: 16px; flex-wrap: wrap; }
+  .app-btn {
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 14px 24px; border-radius: var(--radius);
+    font-size: 14px; font-weight: 400; letter-spacing: .03em;
+    text-decoration: none; transition: all .2s;
+  }
+  .app-btn-primary {
+    background: var(--gold); color: var(--espresso);
+  }
+  .app-btn-primary:hover { background: #dfc06a; }
+  .app-btn-secondary {
+    border: 1px solid rgba(201,168,76,.35); color: var(--sand);
+  }
+  .app-btn-secondary:hover { border-color: var(--gold); color: var(--gold); }
+
+  /* ── COURSE BLOCK ── */
+  .course-block { padding: 100px 48px; }
+  .modules {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2px; margin-top: 56px;
+    border: 1px solid rgba(201,168,76,.12);
+  }
+  .module {
+    padding: 36px 32px;
+    border: 1px solid rgba(201,168,76,.08);
+    transition: background .2s;
+  }
+  .module:hover { background: rgba(201,168,76,.04); }
+  .module-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 13px; color: var(--gold); opacity: .6;
+    margin-bottom: 16px; letter-spacing: .1em;
+  }
+  .module h3 {
+    font-size: 17px; font-weight: 400; color: var(--cream);
+    margin-bottom: 12px; line-height: 1.4;
+  }
+  .module p { font-size: 14px; color: var(--text); opacity: .55; line-height: 1.7; }
+
+  /* ── PRICING ── */
+  .pricing-block {
+    padding: 100px 48px;
+    background: var(--mid);
+    border-top: 1px solid rgba(201,168,76,.1);
+  }
+  .pricing-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 2px; margin-top: 56px;
+    max-width: 900px;
+  }
+  .price-card {
+    padding: 44px 36px;
+    border: 1px solid rgba(201,168,76,.12);
+    position: relative;
+  }
+  .price-card.featured {
+    border-color: rgba(201,168,76,.45);
+    background: rgba(201,168,76,.04);
+  }
+  .price-card.featured .price-badge {
+    position: absolute; top: -1px; left: 36px;
+    background: var(--gold); color: var(--espresso);
+    font-size: 11px; font-weight: 500; letter-spacing: .08em;
+    padding: 4px 12px;
+  }
+  .price-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px; font-weight: 300; color: var(--cream);
+    margin-bottom: 8px;
+  }
+  .price-amount {
+    font-size: 36px; font-weight: 300; color: var(--gold);
+    margin-bottom: 4px; letter-spacing: -.01em;
+  }
+  .price-amount span { font-size: 18px; }
+  .price-desc { font-size: 13px; color: var(--muted); margin-bottom: 32px; }
+  .price-features { list-style: none; }
+  .price-features li {
+    font-size: 14px; color: var(--text); opacity: .7;
+    padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,.05);
+    display: flex; gap: 10px; align-items: flex-start;
+  }
+  .price-features li::before { content: '—'; color: var(--gold); flex-shrink: 0; }
+  .price-features li:last-child { border-bottom: none; }
+  .price-cta {
+    display: block; text-align: center; margin-top: 36px;
+    padding: 14px; border-radius: var(--radius);
+    font-size: 14px; font-weight: 500; letter-spacing: .04em;
+    text-decoration: none; transition: all .2s;
+  }
+  .price-cta-outline {
+    border: 1px solid rgba(201,168,76,.3); color: var(--sand);
+  }
+  .price-cta-outline:hover { border-color: var(--gold); color: var(--gold); }
+  .price-cta-fill {
+    background: var(--gold); color: var(--espresso);
+  }
+  .price-cta-fill:hover { background: #dfc06a; }
+
+  /* ── ABOUT ── */
+  .about-block {
+    padding: 100px 48px;
+    border-top: 1px solid rgba(201,168,76,.1);
+  }
+  .about-inner {
+    max-width: 900px; margin: 0 auto;
+    display: grid; grid-template-columns: 1fr 1.6fr; gap: 80px; align-items: start;
+  }
+  .about-portrait {
+    width: 100%; aspect-ratio: 3/4;
+    background: var(--mid);
+    border: 1px solid rgba(201,168,76,.15);
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 14px; color: var(--muted); font-style: italic;
+    text-align: center; padding: 24px;
+  }
+  .about-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 38px; font-weight: 300; color: var(--cream);
+    margin-bottom: 6px;
+  }
+  .about-role { font-size: 13px; color: var(--gold); letter-spacing: .1em; margin-bottom: 32px; }
+  .about-bio { font-size: 16px; color: var(--text); opacity: .7; line-height: 1.8; }
+  .about-bio p + p { margin-top: 18px; }
+  .about-facts {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 40px;
+  }
+  .fact { border-left: 2px solid var(--gold); padding-left: 16px; }
+  .fact-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px; color: var(--gold); line-height: 1;
+  }
+  .fact-label { font-size: 13px; color: var(--muted); margin-top: 4px; }
+
+  /* ── FINAL CTA ── */
+  .final-cta {
+    padding: 120px 48px;
+    text-align: center;
+    background: var(--mid);
+    border-top: 1px solid rgba(201,168,76,.1);
+  }
+  .final-cta .section-title { max-width: 620px; margin: 0 auto 20px; }
+  .final-cta .section-intro { margin: 0 auto 48px; text-align: center; max-width: 460px; }
+  .cta-group { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+
+  /* ── FOOTER ── */
+  footer {
+    padding: 32px 48px;
+    border-top: 1px solid rgba(201,168,76,.08);
+    display: flex; align-items: center; justify-content: space-between;
+    font-size: 13px; color: var(--muted);
+  }
+  footer a { color: var(--muted); text-decoration: none; }
+  footer a:hover { color: var(--sand); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    nav { padding: 16px 24px; }
+    .hero { padding: 100px 24px 60px; }
+    .spark-block, .app-block, .course-block,
+    .pricing-block, .about-block, .final-cta { padding: 64px 24px; }
+    .spark-inner { grid-template-columns: 1fr; gap: 40px; }
+    .about-inner { grid-template-columns: 1fr; }
+    .about-portrait { aspect-ratio: 4/3; }
+    footer { flex-direction: column; gap: 12px; text-align: center; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="/" class="nav-logo">Levitsky <span>&</span> Son</a>
+  <a href="/" class="nav-back">← Агентство</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <p class="hero-eyebrow">Онлайн-школа · Денис Левицкий</p>
+  <h1 class="hero-title">Мечты<br><em>сбываются</em></h1>
+  <p class="hero-subtitle">Потому что ты не один. Теперь у тебя есть ИИ.</p>
+  <p class="hero-body">
+    Бог вложил искру в каждого. У тебя есть мечта — о своём деле, о свободе,
+    о жизни которую ты сам выбрал. ИИ убирает барьеры между тобой и этой жизнью.
+    Я покажу как.
+  </p>
+  <a href="#app" class="hero-cta">
+    Начать бесплатно <span class="arrow">↓</span>
+  </a>
+</section>
+
+<!-- SPARK QUOTE -->
+<section class="spark-block">
+  <div class="spark-inner">
+    <div class="spark-quote">
+      Каждый предаёт свою мечту хотя бы раз.<br>
+      Но <strong>искра не гаснет.</strong>
+    </div>
+    <div class="spark-text">
+      <p>Большинство людей живут не так, как хотят — и не потому что ленивые или неспособные. Просто между мечтой и реальностью раньше стояло слишком много: нехватка времени, денег, знаний, команды.</p>
+      <p>ИИ изменил это. Сегодня один человек с правильными инструментами делает то, на что раньше нужна была команда из десяти. Я знаю — я сам так живу и строю так для своих клиентов каждый день.</p>
+    </div>
+  </div>
+</section>
+
+<!-- APP BLOCK -->
+<section class="app-block" id="app">
+  <p class="section-label">Приложение · Бесплатно</p>
+  <h2 class="section-title"><em>Искра</em> — твой первый шаг</h2>
+  <p class="section-intro">
+    Напиши свою мечту. ИИ построит твой личный мастер-план
+    и начнётся обучение — именно под твой путь.
+  </p>
+
+  <div class="app-flow">
+    <div class="flow-step">
+      <div class="flow-num">1</div>
+      <div class="flow-content">
+        <h3>Расскажи о своей мечте</h3>
+        <p>Чем хочешь заниматься, как хочешь жить, что хочешь создать. Без ограничений — просто честно.</p>
+        <span class="flow-badge">бесплатно</span>
+      </div>
+    </div>
+    <div class="flow-step">
+      <div class="flow-num">2</div>
+      <div class="flow-content">
+        <h3>ИИ строит твой мастер-план</h3>
+        <p>Персональный путь от твоей точки А к мечте. Шаги, инструменты, навыки — конкретно под тебя, не шаблон.</p>
+        <span class="flow-badge">персонально</span>
+      </div>
+    </div>
+    <div class="flow-step">
+      <div class="flow-num">3</div>
+      <div class="flow-content">
+        <h3>Начинается бесплатное обучение</h3>
+        <p>Базовые инструменты ИИ, первые практики — всё привязано к твоему плану и твоей мечте. Видишь смысл в каждом уроке.</p>
+        <span class="flow-badge">бесплатно</span>
+      </div>
+    </div>
+    <div class="flow-step">
+      <div class="flow-num">4</div>
+      <div class="flow-content">
+        <h3>Курс для выполнения твоего плана</h3>
+        <p>Когда готов идти дальше — открывается полная программа. Не просто "курс по ИИ", а следующий шаг именно твоего пути.</p>
+        <span class="flow-badge">платный курс</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="app-download">
+    <a href="#" class="app-btn app-btn-primary">Скачать Искра — iOS</a>
+    <a href="#" class="app-btn app-btn-secondary">Google Play</a>
+  </div>
+</section>
+
+<!-- COURSE BLOCK -->
+<section class="course-block" id="course">
+  <p class="section-label">Программа курса</p>
+  <h2 class="section-title">От мечты<br>к <em>своей реальности</em></h2>
+  <p class="section-intro">
+    Пять модулей, которые меняют не только то, что ты умеешь —
+    но и то, как ты живёшь.
+  </p>
+
+  <div class="modules">
+    <div class="module">
+      <p class="module-num">Модуль 0</p>
+      <h3>Твоя искра</h3>
+      <p>Находим мечту. Формулируем куда ты хочешь прийти. Знакомишься со своим ИИ-наставником.</p>
+    </div>
+    <div class="module">
+      <p class="module-num">Модуль 1</p>
+      <h3>ИИ как инструмент жизни</h3>
+      <p>ChatGPT, Claude, Gemini — что это, как работает, как использовать каждый день. Первый результат уже на первом уроке.</p>
+    </div>
+    <div class="module">
+      <p class="module-num">Модуль 2</p>
+      <h3>ИИ для работы и дохода</h3>
+      <p>Как люди зарабатывают с ИИ прямо сейчас. Реальные кейсы. Практика: создаёшь свой первый продукт или услугу.</p>
+    </div>
+    <div class="module">
+      <p class="module-num">Модуль 3</p>
+      <h3>Твой ИИ-сотрудник</h3>
+      <p>Как настроить ИИ-ассистента под своё дело. Показываю на примере реальных клиентов моего агентства.</p>
+    </div>
+    <div class="module">
+      <p class="module-num">Модуль 4</p>
+      <h3>Система. 90 дней к мечте</h3>
+      <p>Собираем всё в систему. Уходишь с личным планом на ближайшие три месяца и пониманием каждого шага.</p>
+    </div>
+    <div class="module" style="background: rgba(201,168,76,.03);">
+      <p class="module-num">Бонус</p>
+      <h3>Сообщество и поддержка</h3>
+      <p>Закрытый чат учеников. Еженедельные встречи со мной. ИИ-наставник отвечает на вопросы по курсу 24/7.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="pricing-block" id="pricing">
+  <p class="section-label">Стоимость</p>
+  <h2 class="section-title">Выбери свой<br><em>формат</em></h2>
+
+  <div class="pricing-grid">
+    <div class="price-card">
+      <p class="price-name">Искра</p>
+      <p class="price-amount">Бесплатно</p>
+      <p class="price-desc">Приложение + базовое обучение</p>
+      <ul class="price-features">
+        <li>Приложение Искра</li>
+        <li>Мастер-план под твою мечту</li>
+        <li>Модули 0 и 1 бесплатно</li>
+        <li>ИИ-ассистент с базовым лимитом</li>
+      </ul>
+      <a href="#app" class="price-cta price-cta-outline">Скачать приложение</a>
+    </div>
+
+    <div class="price-card featured">
+      <span class="price-badge">Популярный</span>
+      <p class="price-name">Курс</p>
+      <p class="price-amount"><span>от</span> 9 900 ₽</p>
+      <p class="price-desc">Полная программа с материалами</p>
+      <ul class="price-features">
+        <li>Все 5 модулей + бонус</li>
+        <li>Домашние задания с разбором</li>
+        <li>Пожизненный доступ к записям</li>
+        <li>Закрытый чат учеников</li>
+        <li>ИИ-наставник в чате 24/7</li>
+      </ul>
+      <a href="#" class="price-cta price-cta-fill">Записаться на курс</a>
+    </div>
+
+    <div class="price-card">
+      <p class="price-name">С наставником</p>
+      <p class="price-amount"><span>от</span> 19 900 ₽</p>
+      <p class="price-desc">Курс + живая обратная связь</p>
+      <ul class="price-features">
+        <li>Всё из тарифа Курс</li>
+        <li>Еженедельные Q&A с Денисом</li>
+        <li>Проверка домашних заданий</li>
+        <li>Личный разбор мастер-плана</li>
+      </ul>
+      <a href="#" class="price-cta price-cta-outline">Записаться</a>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about-block" id="about">
+  <div class="about-inner">
+    <div>
+      <div class="about-portrait">Фото Дениса</div>
+    </div>
+    <div>
+      <h2 class="about-name">Денис Левицкий</h2>
+      <p class="about-role">Основатель Levitsky &amp; Son · Автор · Практик</p>
+      <div class="about-bio">
+        <p>Я строю ИИ-сотрудников для бизнеса — реальных, работающих, которые приносят деньги клиентам каждый день. Это не теория, это моя работа.</p>
+        <p>Параллельно написал книгу "Инженеры Бога" — о том, что Бог вложил искру в каждого. В человека, который строит бизнес. И в маму на детской площадке, которая хочет перемен, но не знает с чего начать.</p>
+        <p>Эта школа появилась именно потому, что таких людей — большинство. И ИИ сейчас даёт им шанс, которого раньше не было.</p>
+      </div>
+      <div class="about-facts">
+        <div class="fact">
+          <p class="fact-num">3+</p>
+          <p class="fact-label">года с ИИ в production</p>
+        </div>
+        <div class="fact">
+          <p class="fact-num">10+</p>
+          <p class="fact-label">живых ИИ-сотрудников у клиентов</p>
+        </div>
+        <div class="fact">
+          <p class="fact-num">1</p>
+          <p class="fact-label">книга на Литрес уже сейчас</p>
+        </div>
+        <div class="fact">
+          <p class="fact-num">∞</p>
+          <p class="fact-label">вера в то что мечты сбываются</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final-cta">
+  <p class="section-label">Начни сегодня</p>
+  <h2 class="section-title">Твоя искра<br>никуда <em>не делась</em></h2>
+  <p class="section-intro">
+    Скачай приложение. Напиши свою мечту.
+    Посмотри что будет дальше.
+  </p>
+  <div class="cta-group">
+    <a href="#app" class="hero-cta">Скачать Искра — бесплатно <span class="arrow">→</span></a>
+    <a href="#course" class="app-btn app-btn-secondary" style="padding:16px 36px;">Смотреть программу курса</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span>© 2026 Денис Левицкий · ИП Левицкая Анна Юрьевна</span>
+  <span><a href="/">Levitsky &amp; Son — агентство</a> · <a href="https://www.litres.ru/74466574/" target="_blank">Книга «Инженеры Бога»</a></span>
+</footer>
+
+</body>
+</html>
